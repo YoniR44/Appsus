@@ -1,7 +1,7 @@
-import emailApp from './pages/email-app-cmp.js';
+import emailApp from './apps/email/pages/email-app-cmp.js';
 import homeCmp from './pages/home-cmp.js';
 import aboutCmp from './pages/about-cmp.js';
-import missKeepApp from './pages/missKeep-app-cmp.js';
+import missKeepApp from './apps/keep/pages/missKeep-app-cmp.js';
 
 const routes = [
     { path: '/', component: homeCmp },
