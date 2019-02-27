@@ -19,7 +19,7 @@ export default {
                 <div class = "notes-container" v-if="showText">
                     <ul>
                        <li v-for= "text in texts">
-                            {{text.content}}
+                            {{text.content}} 
                       </li>
                     </ul>
                 </div>

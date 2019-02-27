@@ -16,6 +16,14 @@ li {
     max-width: 100rem;
 }
 
+.missKeep-wrapper li{
+   margin-bottom: 1rem;
+}
+
+.missKeep-wrapper ul{
+  padding: 0;
+ }
+
 .missKeep-wrapper img {
     width: 6rem;
     height: auto;
@@ -24,7 +32,7 @@ li {
 
 .missKeep-wrapper .notes-container{
    max-width:30rem;
-   background-color: bisque;
+   background-color:lightgrey;
 }
 .missKeep-wrapper .img-container{
     /* max-width:10rem; */
