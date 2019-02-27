@@ -1,0 +1,32 @@
+/* base */
+* {
+    box-sizing:  border-box;   
+ }
+ 
+ a {
+    text-decoration: none; 
+ }
+ 
+li {
+    list-style-type: none;
+ }
+
+.missKeep-wrapper{
+    background-color: lightsteelblue;
+    max-width: 100rem;
+}
+
+.missKeep-wrapper img {
+    width: 6rem;
+    height: auto;
+    object-fit: contain;
+}
+
+.missKeep-wrapper .notes-container{
+   max-width:30rem;
+   background-color: bisque;
+}
+.missKeep-wrapper .img-container{
+    /* max-width:10rem; */
+    background-color: beige;;
+ }
