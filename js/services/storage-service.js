@@ -2,7 +2,8 @@
 
 export default {
     store,
-    load
+    load,
+    getDataFromFile
 }
 
 function store(key, value) {
@@ -15,3 +16,8 @@ function load(key) {
     return JSON.parse(str)
 }
 
+function getDataFromFile() {
+    return fetch('data/data.json')
+      .then(response => response.json())
+  };
+  
