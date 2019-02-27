@@ -1,0 +1,13 @@
+.single-email {
+    background-color: rgb(212, 212, 44);
+    border: 2px solid black;
+    margin: 3px;
+    padding: 5px;
+    width: 300px;
+    /* height: 100px;
+    overflow: hidden; */
+}
+
+.read-email {
+    background-color: rgb(249, 249, 126);
+}

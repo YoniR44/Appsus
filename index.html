@@ -9,25 +9,25 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/helpers.css">
     <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/email-app.css">
+    <link rel="stylesheet" href="css/email-app/email-app.css">
     <link rel="stylesheet" href="css/missKeep-app.css">
 </head>
 
 <body>
     <div id="app">
-        <nav>
-            <router-link to="/" exact>Home</router-link> |
-            <router-link to="/about">About</router-link> |
-            <router-link to="/email-app">Email</router-link> |
-            <router-link to="/missKeep-app">Notes</router-link>
+        <nav class="main-navbar">
+            <router-link class="navbar-item" to="/" exact>Home</router-link> 
+            <router-link class="navbar-item" to="/about">About</router-link> 
+            <router-link class="navbar-item" to="/email-app">Email</router-link> 
+            <router-link class="navbar-item" to="/missKeep-app">Notes</router-link>
         </nav>
         <router-view></router-view>
-        <footer>
+        <footer class="main-footer">
            <hr> 
            coffeerights &copy; 2019
         </footer>
     </div>
-
+    
     <script src="lib/axios.js"></script>
     <script src="lib/vue.js"></script>
     <script src="lib/vue-router.js"></script>
