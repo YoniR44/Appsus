@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Appsus</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/helpers.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/email-app.css">
+    <link rel="stylesheet" href="css/missKeep-app.css">
+</head>
+
+<body>
+    <div id="app">
+        <nav>
+            <router-link to="/" exact>Home</router-link> |
+            <router-link to="/about">About</router-link> |
+            <router-link to="/email-app">Email</router-link> |
+            <router-link to="/missKeep-app">Notes</router-link>
+        </nav>
+        <router-view></router-view>
+        <footer>
+           <hr> 
+           coffeerights &copy; 2019
+        </footer>
+    </div>
+
+    <script src="lib/axios.js"></script>
+    <script src="lib/vue.js"></script>
+    <script src="lib/vue-router.js"></script>
+    <!-- <script src="js/services/storage-service.js"></script> -->
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

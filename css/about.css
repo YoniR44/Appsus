@@ -1,0 +1,24 @@
+.fade-enter {
+    opacity: 0;
+}
+  
+.fade-enter-active {
+    transition: opacity 3s;
+}
+  
+.fade-leave-active {
+    transition: opacity 1s;
+    opacity: 0;
+}
+
+.myImg {
+    border-radius: 50%;
+}
+
+.my-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: lightblue;
+}
