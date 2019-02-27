@@ -13,12 +13,12 @@ li {
 
 .missKeep-wrapper{
     background-color: lightsteelblue;
-    max-width: 1200px;
+    max-width: 100rem;
 }
 
 .missKeep-wrapper img {
     width: 6rem;
-    height: 6rem;
+    height: auto;
     object-fit: contain;
 }
 
@@ -27,6 +27,6 @@ li {
    background-color: bisque;
 }
 .missKeep-wrapper .img-container{
-    max-width:30rem;
-    background-color: beige;
+    /* max-width:10rem; */
+    background-color: beige;;
  }

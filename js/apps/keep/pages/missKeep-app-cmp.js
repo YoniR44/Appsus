@@ -1,37 +1,34 @@
 export default {
-    template: 
+    template:
         `<section class="missKeep-app-body">
             <div class = "missKeep-wrapper">
                <header>
               <h1>missKeep</h1>  
              <input type="text" placeholder="Search">
+             <select v-model = "selected">
+             <option value="text">Text</option>
+             <option value="image">Image</option>
+             <option value="video">Video</option>
+            </select> 
+            <span>Selected: {{ selected }}</span>
+            <input type="text" placeholder="Search">
              <hr>
              </header>
              <main class = "flex justify-center align-center">
-                <div class = "notes-container">
-                  <ul>
-                       <li> 
-                       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.
-                       </li>
-                      <li> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.
+                <div class = "notes-container" v-if="showText">
+                    <ul>
+                       <li v-for= "text in texts">
+                            {{text.content}}
                       </li>
-                      <li> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.
-                      </li>
-                 </ul>
-                 </div>
-                 <div class = "img-container">
-                  <ul>
-                       <li> 
-                       <img src = "../img/Clubs-Ace.jpg" > </img>
-                       </li>
-                      <li> 
-                      <img src = "../img/Clubs-Ace.jpg" > </img>
-                      </li>
-                      <li> 
-                      <img src = "../img/Clubs-Ace.jpg" > </img>
-                      </li>
-                 </ul>
-                 </div>
+                    </ul>
+                </div>
+                <div class = "img-container" v-if="showImg">
+                    <ul>
+                        <li v-for= "(url,index) in urls">
+                         <img :src = url.url ></img>
+                        </li>
+                    </ul>
+                </div>
              </main>
             </div>
         </section>
@@ -39,20 +36,29 @@ export default {
 
     data() {
         return {
-            
+            texts: [{ content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.' },
+            { content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.' },
+            { content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.' }
+            ],
+            urls: [{url:'../img/Clubs-Ace.jpg'},
+            {url:'../img/Clubs-Ace.jpg'},
+            {url:'../img/Clubs-Ace.jpg'}],
+            noteType: 'text',
+            selected: 'text',
         }
     },
     components: {
         
     },
     methods: {
-        
+
     },
     computed: {
-       
+        showImg() { return (this.selected === 'image') ? true : false; },
+        showText() { return (this.selected === 'text') ? true : false; }
     },
     created() {
-         console.log(`Miss Keep Page is loaded!`) ;
+        console.log(`Miss Keep Page is loaded!`);
     }
-   
+
 }
