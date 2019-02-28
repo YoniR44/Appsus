@@ -11,14 +11,15 @@ export default {
              <option value="video">Video</option>
             </select> 
             <span>Selected: {{ selected }}</span>
-            <input type="text" placeholder="Search">
-             <hr>
+            <input v-model = "newText" type="text" placeholder="" @keyup.enter= "hmm">
+            <span>Selected: {{ newText }}</span>
+            <hr>
              </header>
              <main class = "flex justify-center align-center">
                 <div class = "notes-container" v-if="showText">
                     <ul>
                        <li v-for= "text in texts">
-                            {{text.content}}
+                            {{text.content}} 
                       </li>
                     </ul>
                 </div>
@@ -38,19 +39,24 @@ export default {
         return {
             texts: [{ content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.' },
             { content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.' },
-            { content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.' }
+            // { content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.' }
             ],
             urls: [{url:'../img/Clubs-Ace.jpg'},
             {url:'../img/Clubs-Ace.jpg'},
             {url:'../img/Clubs-Ace.jpg'}],
             noteType: 'text',
             selected: 'text',
+            newText: ''
         }
     },
     components: {
         
     },
     methods: {
+        hmm() {
+            console.log('hmmm');
+            this.texts.push({content: this.newText});
+        }
 
     },
     computed: {

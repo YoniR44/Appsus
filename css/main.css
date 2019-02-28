@@ -7,6 +7,11 @@ a:-webkit-any-link {
     color: unset;
 }
 
+li {
+    list-style-type: none;
+ }
+ 
+
 /* MAIN APP NAVBAR */
 
 .main-navbar {
