@@ -24,7 +24,10 @@ export default {
                 <hr>
             </header>
             <main class = "flex justify-center align-center">
-                <div class = "missKeep-pending" v-if="showPendingStatus"> Hold on! Loading some things...</div>
+                <div class = "missKeep-pending" v-if="showPendingStatus"> Hold on! Loading some things...
+                    If nothing shows you have to run it with Live Server because fetch gets blocked 
+                    when using browser link from GitHub. I will switch to localstorage later if needed.      
+                </div>
                 <component :is = "cmp.type" :data = "cmp.data" v-if="selected"></component>
             </main>
             </div>
@@ -48,9 +51,9 @@ export default {
     },
     methods: {
         getData() {
-            storageService.getDataFromFile('notes')
+            storageService.getDataFromFileGit('notes')
                 .then(notes => this.notes = notes);
-            storageService.getDataFromFile('imgUrls')
+            storageService.getDataFromFileGit('imgUrls')
                 .then( urls => this.imgUrls = urls);
             setTimeout(() => { this.selected = 'text'; console.log('after timeout...', this.notes);
             console.log('after timeout...', this.imgUrls) }, 3000);
