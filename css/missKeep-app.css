@@ -9,10 +9,6 @@
    margin: 0;
 }
 
-.missKeep-wrapper li{
-   margin-bottom: 1rem;
-}
-
 .missKeep-wrapper ul{
   padding: 0;
  }
@@ -30,4 +26,20 @@
 .missKeep-wrapper .img-container{
     /* max-width:10rem; */
     background-color: beige;;
+ }
+
+ /* Keep-mages */
+ .keep-images ul {
+    margin: 1rem 1rem 1rem 1rem;
+    outline: 1px solid #0053ba;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: lightgray;
+    max-width:90rem;
+    flex-wrap: wrap;
+    color:snow;
+ }
+ .keep-images li {
+    margin: 0 0.5rem 0 0.5rem
  }
