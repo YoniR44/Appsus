@@ -1,85 +1,85 @@
 import storageService from '../../../services/storage-service.js';
+import keepNotes from '../cmps/keep-notes-cmp.js'
+import keepImages from '../cmps/keep-images-cmp.js'
+
 export default {
     template:
         `<section class="missKeep-app-body">
             <div class = "missKeep-wrapper">
-               <header>
-              <h1 @click = "hhh">missKeep</h1>  
-              <div> {{books}} </div>
-             <input type="text" placeholder="Search">
-             <select v-model = "selected">
-             <option value="text">Text</option>
-             <option value="image">Image</option>
-             <option value="video">Video</option>
-            </select> 
-            <span>Selected: {{ selected }}</span>
-            <input v-model = "newText" type="text" placeholder="" @keyup.enter= "hmm">
-            <span>Selected: {{ newText }}</span>
-            <hr>
-             </header>
-             <main class = "flex justify-center align-center">
-                <div class = "notes-container" v-if="showText">
-                    <ul>
-                       <li v-for= "text in texts">
-                            {{text.content}} 
-                      </li>
-                    </ul>
+            <header>
+                <div> 
+                    <button @click="saveNotesLocally">Save Notes</button>
+                    <button @click="saveImgUrlsLocally">Save Image Urls</button>
                 </div>
-                <div class = "img-container" v-if="showImg">
-                    <ul>
-                        <li v-for= "(url,index) in urls">
-                         <img :src = url.url ></img>
-                        </li>
-                    </ul>
-                </div>
-             </main>
+                <h1>missKeep</h1>  
+                <input type="text" placeholder="Search">
+                <select v-model = "selected">
+                    <option value="text">Text</option>
+                    <option value="image">Image</option>
+                    <option value="video">Video</option>
+                </select> 
+                <span>Selected: {{ selected }}</span>
+                <input v-model = "newText" type="text" placeholder="" @keyup.enter= "hmm">
+                <span>Selected: {{ newText }}</span>
+                <hr>
+            </header>
+            <main class = "flex justify-center align-center">
+                <div class = "missKeep-pending" v-if="showPendingStatus"> Hold on! Loading some things...</div>
+                <component :is = "cmp.type" :data = "cmp.data" v-if="selected"></component>
+            </main>
             </div>
         </section>
     `,
-
     data() {
         return {
-            texts: [{ content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.' },
-            { content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.' },
-                // { content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.' }
-            ],
-            urls: [{ url: '../img/Clubs-Ace.jpg' },
-            { url: '../img/Clubs-Ace.jpg' },
-            { url: '../img/Clubs-Ace.jpg' }],
-            noteType: 'text',
-            selected: 'text',
+            selected: '',
             newText: '',
             notes: [],
-            books: []
+            imgUrls:[],
+            cmp: {
+                type: 'keepNotes',
+                data: this.texts
+            },
         }
     },
     components: {
-
+        keepNotes,
+        keepImages,
     },
     methods: {
-        hmm() {
-            console.log('hmmm');
-            this.texts.push({ content: this.newText });
+        getData() {
+            storageService.getDataFromFile('notes')
+                .then(notes => this.notes = notes);
+            storageService.getDataFromFile('imgUrls')
+                .then( urls => this.imgUrls = urls);
+            setTimeout(() => { this.selected = 'text'; console.log('after timeout...', this.notes);
+            console.log('after timeout...', this.imgUrls) }, 3000);
+            console.log('cmp', this.cmp);
         },
-        hhh() {
-            console.log('ppp');
-            storageService.saveToFile(JSON.stringify(this.urls), 'rr.json');
+        saveNotesLocally(){
+            storageService.saveToFile(JSON.stringify(this.notes), 'notes.json');
+        },
+        saveImgUrlsLocally(){
+            storageService.saveToFile(JSON.stringify(this.imgUrls), 'imgUrls.json');
         }
-
     },
     computed: {
-        showImg() { return (this.selected === 'image') ? true : false; },
-        showText() { return (this.selected === 'text') ? true : false; }
+        showPendingStatus() { return (!this.selected) ? true : false;}
+    },
+    watch: {
+        selected() {
+            switch (this.selected) {
+                case ('text'): this.cmp = { type: 'keepNotes', data: this.notes }; break;
+                case ('image'): this.cmp = { type: 'keepImages', data: this.imgUrls }; break;
+            }
+        }
     },
     created() {
         console.log(`Miss Keep Page is loaded!`);
     },
 
     mounted() {
-        storageService.getDataFromFile('notes')
-            .then(notes => this.notes = notes);
-        setTimeout(() => { console.log('after timeout...', this.notes) }, 3000);
-
+        this.getData()
     }
 
 }
