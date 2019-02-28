@@ -38,7 +38,7 @@ export default {
             imgUrls:[],
             cmp: {
                 type: 'keepNotes',
-                data: this.texts
+                data: this.notes
             },
         }
     },
@@ -48,9 +48,9 @@ export default {
     },
     methods: {
         getData() {
-            storageService.getDataFromFile('notes')
+            storageService.getDataFromFileGit('notes')
                 .then(notes => this.notes = notes);
-            storageService.getDataFromFile('imgUrls')
+            storageService.getDataFromFileGit('imgUrls')
                 .then( urls => this.imgUrls = urls);
             setTimeout(() => { this.selected = 'text'; console.log('after timeout...', this.notes);
             console.log('after timeout...', this.imgUrls) }, 3000);

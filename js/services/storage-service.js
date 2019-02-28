@@ -4,6 +4,7 @@ export default {
     store,
     load,
     getDataFromFile,
+    getDataFromFileGit,
     saveToFile
 }
 
@@ -19,6 +20,13 @@ function load(key) {
 
 function getDataFromFile(name) {
     let fileName = '../js/services/data/' + name + '.json';
+    console.log('Loading: ',fileName);
+    return fetch(fileName)
+        .then(response => response.json())
+};
+
+function getDataFromFileGit(name) {
+    let fileName = 'https://yonir44.github.io/Appsus/js/services/data/' + name + '.json';
     console.log('Loading: ',fileName);
     return fetch(fileName)
         .then(response => response.json())
