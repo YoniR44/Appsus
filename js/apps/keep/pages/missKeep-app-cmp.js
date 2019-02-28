@@ -32,8 +32,6 @@ export default {
                 </div>
              </main>
             </div>
-            <br>
-            <p> ---------------------------</p>
         </section>
     `,
 
