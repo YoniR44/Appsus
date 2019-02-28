@@ -1,4 +1,5 @@
 import emailPreview from './email-preview-cmp.js';
+import { eventBus } from '../../../event-bus.js';
 
 export default {
     props: ['emails'],
@@ -14,5 +15,8 @@ export default {
     components: {
         emailPreview
     },
+    created() {
+        eventBus.$emit('statusChanged');
+    }
     
 }

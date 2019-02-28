@@ -1,6 +1,16 @@
 @import url(email-list.css);
 @import url(email-preview.css);
 @import url(email-details.css);
+@import url(email-compose.css);
+@import url(email-status.css);
+@import url(email-filter.css);
+
+.email-tools {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3px;
+}
 
 .emails-container {
     display: flex;
@@ -13,4 +23,25 @@
     border: 1px solid black;
     margin: 3px;
     padding: 5px;
+}
+
+.compose-btn {
+    width: 140px;
+    height: 30px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filter-select {
+    width: 140px;
+    height: 30px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
 }

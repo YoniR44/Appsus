@@ -5,12 +5,12 @@
 /* clears the default link coloring */
 a:-webkit-any-link {
     color: unset;
+    text-decoration: unset;
 }
 
 li {
     list-style-type: none;
- }
- 
+}
 
 /* MAIN APP NAVBAR */
 

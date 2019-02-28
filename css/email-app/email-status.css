@@ -1,0 +1,11 @@
+.percent-bar {
+    width: 140px;
+    height: 30px;
+    border: 1px solid black;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+}

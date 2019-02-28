@@ -1,8 +1,7 @@
 export default {
     template: `
-        <section class="email-filter">
-            <h3>Filter By</h3>
-            <input @keyup="emitFilter" v-model="filterBy.term" type="text" placeholder="Search in emails">
+        <section>
+            <input class="email-filter" @keyup="emitFilter" v-model="filterBy.term" type="text" placeholder="Search in emails">
         </section> 
     `,
     data() {

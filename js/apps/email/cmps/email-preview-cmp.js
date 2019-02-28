@@ -1,3 +1,6 @@
+import emailService from '../services/email-service.js';
+import { eventBus } from '../../../event-bus.js';
+
 export default {
     props: ['email'],
     template: `
@@ -8,7 +11,12 @@ export default {
     `,
     methods: {
         updateReadStatus() {
-            this.email.isRead = true;
+            var emailId = this.email.id;
+            emailService.updateEmailStatus(emailId, true)
+            .then(email => {
+                this.email = email;
+                eventBus.$emit('statusChanged');
+            });
         }
-    },   
+    },
 }
