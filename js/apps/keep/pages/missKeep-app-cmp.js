@@ -48,9 +48,9 @@ export default {
     },
     methods: {
         getData() {
-            storageService.getDataFromFileGit('notes')
+            storageService.getDataFromFile('notes')
                 .then(notes => this.notes = notes);
-            storageService.getDataFromFileGit('imgUrls')
+            storageService.getDataFromFile('imgUrls')
                 .then( urls => this.imgUrls = urls);
             setTimeout(() => { this.selected = 'text'; console.log('after timeout...', this.notes);
             console.log('after timeout...', this.imgUrls) }, 3000);
