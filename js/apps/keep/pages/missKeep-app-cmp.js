@@ -1,6 +1,7 @@
 import storageService from '../../../services/storage-service.js';
 import keepNotes from '../cmps/keep-notes-cmp.js'
 import keepImages from '../cmps/keep-images-cmp.js'
+import keepTodo from '../cmps/keep-todo-cmp.js'
 
 export default {
     template:
@@ -23,6 +24,7 @@ export default {
                 <span>Selected: {{ newText }}</span>
                 <hr>
             </header>
+            <keep-todo v-if="selected"></keep-todo>
             <main class = "flex justify-center align-center">
                 <div class = "missKeep-pending" v-if="showPendingStatus"> Hold on! Loading some things...
                     If nothing shows you have to run it with Live Server because fetch gets blocked 
@@ -48,6 +50,7 @@ export default {
     components: {
         keepNotes,
         keepImages,
+        keepTodo
     },
     methods: {
         getData() {
