@@ -16,18 +16,20 @@
 <body>
     <div id="app">
         <nav class="main-navbar">
-            <router-link class="navbar-item" to="/" exact>Home</router-link> 
-            <router-link class="navbar-item" to="/about">About</router-link> 
-            <router-link class="navbar-item" to="/email-app">Email</router-link> 
+            <router-link class="navbar-item" to="/" exact>Home</router-link>
+            <router-link class="navbar-item" to="/about">About</router-link>
+            <router-link class="navbar-item" to="/email-app">Email</router-link>
             <router-link class="navbar-item" to="/missKeep-app">Notes</router-link>
         </nav>
-        <router-view></router-view>
-        <footer class="main-footer">
-           <hr> 
-           coffeerights &copy; 2019
-        </footer>
+        <div class="display-container">
+            <router-view></router-view>
+            <footer class="main-footer">
+                <hr>
+                coffeerights &copy; 2019
+            </footer>
+        </div>
     </div>
-    
+
     <script src="lib/axios.js"></script>
     <script src="lib/vue.js"></script>
     <script src="lib/vue-router.js"></script>

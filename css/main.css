@@ -2,23 +2,15 @@
     box-sizing: border-box;
 }
 
-body {
-    position: relative;
-    /* padding-bottom: 6rem; */
-}
-
-router-links a {
-    text-decoration: none;
-}
-
+/* clears the default link coloring */
 a:-webkit-any-link {
-    color: none;
+    color: unset;
 }
 
 /* MAIN APP NAVBAR */
 
 .main-navbar {
-    height: 100px;
+    height: 15vh;
     display: flex;
     justify-content: center;
     background-color: orange;
@@ -33,11 +25,18 @@ a:-webkit-any-link {
     justify-content: center;
 }
 
+/* MAIN APP DISPLAY (body + footer) */
+
+.display-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 82vh;
+}
+
 /* MAIN APP FOOTER */
 
 .main-footer {
-    position: absolute;
-    bottom: 0;
     width: 98vw;
     text-align: center;
     margin-bottom: 10px;

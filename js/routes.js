@@ -7,10 +7,10 @@ import emailDetails from './apps/email/cmps/email-details-cmp.js';
 const routes = [
     { path: '/', component: homeCmp },
     { path: '/about', component: aboutCmp },
-    { path: '/email-app', component: emailApp },    
+    { path: '/email-app', component: emailApp, children: [
+        { path: '/email-app/email/:emailId', component: emailDetails },        
+    ] },    
     { path: '/missKeep-app', component: missKeepApp },
-    { path: '/email/:emailId', component: emailDetails },
-        
 ]
 
 export default routes;

@@ -7,7 +7,12 @@ export default {
         <section class="email-app-body" v-if="emails">
             <h1>Email-app</h1>
             <email-filter @filtered="setFilter"></email-filter>
-            <email-list :emails="emailsToShow"></email-list>  
+            <div class="emails-container">
+                <email-list :emails="emailsToShow"></email-list>
+                <div class="info-container">
+                    <router-view></router-view>
+                </div>  
+            </div>
         </section>
     `,
     data() {
@@ -27,7 +32,8 @@ export default {
     computed: {
         emailsToShow() {
             if (!this.emails) return;
-            return this.emails.filter(email => email.subject.toLowerCase().includes(this.filterBy.term.toLowerCase()) || email.body.toLowerCase().includes(this.filterBy.term.toLowerCase()))
+            return this.emails.filter(email => email.subject.toLowerCase().includes(this.filterBy.term.toLowerCase()) || 
+                email.body.toLowerCase().includes(this.filterBy.term.toLowerCase()));
         }
     },
     created() {
@@ -38,5 +44,6 @@ export default {
         emailService,
         emailList,
         emailFilter,
-    }
+    },
+    
 }

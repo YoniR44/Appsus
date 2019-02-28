@@ -1,11 +1,17 @@
 import { makeId } from '../../../services/util-service.js';
+import storageService from '../../../services/storage-service.js';
 
 export default {
     queryEmails,
-    getEmailById
+    getEmailById,
+    deleteEmail
 }
 
+const EMAILS_KEY = 'emails_key'
+
 var gEmails = [];
+
+createEmails();
 
 function createEmail(subject, body) {
     var email = {
@@ -20,7 +26,7 @@ function createEmail(subject, body) {
 
 function createEmails() {
     gEmails.push(createEmail('Whats up with Vue', 'Sawsan Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!'));
-    gEmails.push(createEmail('Howdie', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!'));
+    gEmails.push(createEmail('Howdy', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!'));
     gEmails.push(createEmail('Join our team!', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!'));
     gEmails.push(createEmail('Become a member!', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!'));
     gEmails.push(createEmail('Are you available??', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!'));
@@ -32,7 +38,6 @@ function createEmails() {
 }
 
 function queryEmails() {
-    createEmails();
     return Promise.resolve(gEmails);
 }
 
@@ -41,4 +46,11 @@ function getEmailById(emailId) {
         return emailId === email.id;
     })
     return Promise.resolve(email);
+}
+
+function deleteEmail(emailId) {
+    var emailIdx = gEmails.findIndex(email => emailId === email.id);
+    gEmails.splice(emailIdx, 1);
+    storageService.store(EMAILS_KEY, gEmails);
+    return Promise.resolve();
 }

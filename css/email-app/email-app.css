@@ -1,2 +1,16 @@
 @import url(email-list.css);
 @import url(email-preview.css);
+@import url(email-details.css);
+
+.emails-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.info-container {
+    height: 60vh;
+    width: 80vw;
+    border: 1px solid black;
+    margin: 3px;
+    padding: 5px;
+}
