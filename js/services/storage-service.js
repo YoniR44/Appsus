@@ -17,8 +17,10 @@ function load(key) {
     return JSON.parse(str)
 }
 
-function getDataFromFile() {
-    return fetch('data/data.json')
+function getDataFromFile(name) {
+    let fileName = '/js/services/data/' + name + '.json';
+    console.log(fileName);
+    return fetch(fileName)
         .then(response => response.json())
 };
 

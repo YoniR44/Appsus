@@ -1,9 +1,11 @@
+import storageService from '../../../services/storage-service.js';
 export default {
     template:
         `<section class="missKeep-app-body">
             <div class = "missKeep-wrapper">
                <header>
-              <h1>missKeep</h1>  
+              <h1 @click = "hhh">missKeep</h1>  
+              <div> {{books}} </div>
              <input type="text" placeholder="Search">
              <select v-model = "selected">
              <option value="text">Text</option>
@@ -39,23 +41,29 @@ export default {
         return {
             texts: [{ content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.' },
             { content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.' },
-            // { content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.' }
+                // { content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo.' }
             ],
-            urls: [{url:'../img/Clubs-Ace.jpg'},
-            {url:'../img/Clubs-Ace.jpg'},
-            {url:'../img/Clubs-Ace.jpg'}],
+            urls: [{ url: '../img/Clubs-Ace.jpg' },
+            { url: '../img/Clubs-Ace.jpg' },
+            { url: '../img/Clubs-Ace.jpg' }],
             noteType: 'text',
             selected: 'text',
-            newText: ''
+            newText: '',
+            notes: [],
+            books: []
         }
     },
     components: {
-        
+
     },
     methods: {
         hmm() {
             console.log('hmmm');
-            this.texts.push({content: this.newText});
+            this.texts.push({ content: this.newText });
+        },
+        hhh() {
+            console.log('ppp');
+            storageService.saveToFile(JSON.stringify(this.urls), 'rr.json');
         }
 
     },
@@ -65,6 +73,13 @@ export default {
     },
     created() {
         console.log(`Miss Keep Page is loaded!`);
+    },
+
+    mounted() {
+        storageService.getDataFromFile('notes')
+            .then(notes => this.notes = notes);
+        setTimeout(() => { console.log('after timeout...', this.notes) }, 3000);
+
     }
 
 }
