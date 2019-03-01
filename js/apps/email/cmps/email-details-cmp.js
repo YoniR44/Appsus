@@ -7,19 +7,20 @@ export default {
             <div class="email-header">
                 <span><b>{{email.subject}}</b></span>
                 <div>
-                    <router-link :to="'/email-app/email-compose'">                        
-                        <button class="reply-btn" @click="replyEmail">Reply</button>
+                    <router-link :to="{name: 'eCompose', params: {id:email.subject}}">                        
+                    <button class="reply-btn" @click="replyEmail">Reply</button>
                     </router-link>
                     <button class="unread-btn" @click="unreadEmail">Unread</button>
                     <button class="delete-btn" @click="deleteEmail">Delete</button>
-                </div>
-            </div> 
-            <hr>
-            <div class="email-body">
-                {{email.body}}
-            </div>   
-        </section>
-    `,
+                    </div>
+                    </div> 
+                    <hr>
+                    <div class="email-body">
+                    {{email.body}}
+                    </div>   
+                    </section>
+                    `,
+                    //<button class="reply-btn" @click="replyEmail">Reply</button>
     data() {
         return {
             email: null,
