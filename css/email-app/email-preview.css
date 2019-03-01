@@ -5,23 +5,34 @@
     padding-left: 5px;
     width: 272px;
     max-width: 272px;
-    height: 100px;
+    height: 80px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     border-radius: 5px;
 }
 
 .single-email:hover {
-    background-color: lightgrey;
+    background-color: rgb(212, 159, 159, 0.7);
 }
 
 .read-email {
-    background-color: whitesmoke;
+    background-color: rgba(245, 245, 245, 0.7);
 }
 
 .email-preview-body, .email-preview-subject, .email-preview-sender {
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.email-preview-center {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.email-sender-time {
+    width: 25%;
 }

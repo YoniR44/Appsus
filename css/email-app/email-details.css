@@ -7,3 +7,27 @@
     display: flex;
     justify-content: space-between;
 }
+
+.email-sender-icon {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: cadetblue;
+    margin-right: 5px;
+    font-size: 0;
+    text-align: center;
+    line-height: 38px; 
+}
+
+.email-sender-icon::first-letter {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.email-sender-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
+    margin: 10px 0;
+}

@@ -18,12 +18,13 @@ createEmails();
 sortByTime(gEmails);
 
 function _createEmail(subject, body, fromWho) {
+    var currTime = new Date();
     var email = {
         id: makeId(),
         subject: subject,
         body: body,
         isRead: false,
-        sentAt: Date.now(),
+        sentAt: currTime.getDate() + '/' + (currTime.getMonth() + 1) + '/' + currTime.getFullYear() + '\n' + currTime.getHours() + ':' + currTime.getMinutes(),
         fromWho: fromWho
     }
     return email;
