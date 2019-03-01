@@ -31,18 +31,11 @@ export default {
             `,
     methods: {
         triggerNoteRoute(note,index) {
-           // console.log(note.id);
             this.$router.push({ name: 'noteRoute',params:{ id:note.id,content : note.content,index:index }});
 
         }
     },
     created() {
-        //    <router-link :to="{name: 'noteRoute', params: {id: currNote.id, content : currNote.content, index: index}}" >
-        //         <keep-display-note
-        //             :content = "currNote.content" :index = "index">
-        //         </keep-display-note>
-        //     </router-link>
         console.log('keepNotes linked');
-        console.log('notes', this.notes);
     }
 }

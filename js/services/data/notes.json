@@ -2,17 +2,31 @@
   {
     "id": "OXeMG8wNskc",
     "pinned": false,
-    "content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo."
+    "content": "some random note 1"
   },
   {
     "id": "OXeMG8wNskb",
     "pinned": false,
-    "content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo."
+    "content": "some random note 2"
   },
   {
     "id": "OXeMG8wNskd",
+    "pinned": true,
+    "content": "some random note 3"
+  },
+  {
+    "id": "OXeMG8wNsad",
     "pinned": false,
-    "content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum, deleniti voluptates assumenda saepe suscipit provident voluptatibus soluta aut totam vero recusandae, nemo et tenetur quas labore maxime. Itaque, quo."
+    "content": "some random note 4"
+  },
+  {
+    "id": "OXeMG8wNsbd",
+    "pinned": true,
+    "content": "some random note 5"
+  },
+  {
+    "id": "OXeMG8wNscd",
+    "pinned": false,
+    "content": "some random note 6"
   }
 ]
-
