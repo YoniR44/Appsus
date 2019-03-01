@@ -85,7 +85,8 @@ export default {
     },
 
     mounted() {
-        this.getData()
+        this.getData(),
+        this.$router.push({ path: '/missKeep-app' });
     }
 
 }

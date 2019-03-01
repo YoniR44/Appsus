@@ -28,7 +28,7 @@
     background-color: beige;;
  }
 
- /* Keep-mages */
+ /* Keep-images */
  .keep-images ul {
     margin: 1rem 1rem 1rem 1rem;
     outline: 1px solid #0053ba;
@@ -43,3 +43,90 @@
  .keep-images li {
     margin: 0 0.5rem 0 0.5rem
  }
+
+ /* keep-Todo */
+ .keep-todo .removed {
+   color: gray;
+ }
+ 
+.keep-todo .removed span {
+   text-decoration: line-through;
+ }
+
+ .keep-todo ul li span {
+   margin-left: 0.3rem;
+ }
+ /* modal */
+ .modal-mask {
+   position: fixed;
+   z-index: 9998;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, .5);
+   transition: opacity .3s ease;
+}
+
+.modal-container {
+   width: 30rem;
+   margin: 40px auto 0;
+   padding: 1.5rem 2rem;
+   background-color: #fff;
+   border-radius: 2px;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+   transition: all .3s ease;
+   font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-mask .modal-header h3 {
+   margin-top: 0;
+   color: #42b983;
+}
+
+.modal-mask .modal-body {
+   margin: 20px 0;
+}
+
+.modal-mask .text-right {
+   text-align: right;
+}
+
+.modal-mask .form-label {
+   display: block;
+   margin-bottom: 1em;
+}
+
+.modal-mask .form-label > .form-control {
+   margin-top: 0.5em;
+}
+
+.modal-mask .form-control {
+   display: block;
+   width: 100%;
+   padding: 0.5em 1em;
+   line-height: 1.5;
+   border: 1px solid #ddd;
+}
+
+.modal-mask .modal-enter, .modal-leave {
+   opacity: 0;
+}
+
+.modal-mask .modal-enter .modal-container,
+.modal-mask .modal-leave .modal-container {
+   /* -webkit-transform: scale(1.1); */
+   transform: scale(1.1);
+}
+
+.modal-mask .img-wrapper {
+   background-color: yellow;
+   padding: 1rem 0 1rem 0
+}
+ 
+.modal-mask img {
+   width:15rem;
+   height:auto;
+   object-fit: contain;
+}
+ 
