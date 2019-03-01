@@ -5,8 +5,8 @@ export default {
     props: ['email'],
     template: `
         <li class="single-email" :class="{'read-email': email.isRead}" @click="updateReadStatus">
-            <h3>{{email.subject}}</h3>
-            <p>{{email.body}}</p>
+            <span class="email-preview-subject"><b>{{email.subject}}</b></span>
+            <div class="email-preview-body">{{email.body}}</div>
         </li>
     `,
     methods: {

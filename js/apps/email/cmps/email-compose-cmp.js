@@ -24,7 +24,15 @@ export default {
                 console.log('email added');
                 eventBus.$emit('statusChanged');
             })      
-        }
+        },
+    },
+    created() {
+        // eventBus.$on('openReply2', (emailSubject) => {
+        //     this.subject = emailSubject;
+        //     console.log(this.subject); // prints right value   
+        // })
+        
+        // console.log(this.subject); // prints old value
     },
     components: {
         emailService

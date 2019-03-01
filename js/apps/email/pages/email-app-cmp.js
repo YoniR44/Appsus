@@ -6,27 +6,32 @@ import emailStatus from '../cmps/email-status-cmp.js';
 export default {
     template: `
         <section class="email-app-body" v-if="emails">
-            <h1>Email-app</h1>
             <div class="email-tools">
                 <router-link :to="'/email-app/email-compose'">
                     <button class="compose-btn">Compose Email</button>
                 </router-link>
-                <select class="filter-select" v-model="filterType" :emails="showEmailsBySelect" >
-                    <option value="all">All</option>
-                    <option value="read">Read</option>
-                    <option value="unread">Unread</option>
-                </select>
-                <select class="filter-select" v-model="sortType" @change="sortEmailsBySelect">
-                    <option value="sortByNewest">Sort By Newest</option>
-                    <option value="sortByOldest">Sort By Oldest</option>
-                    <option value="sortBySubject">Sort By Subject</option>
-                </select>
-                <email-filter @filtered="setFilter"></email-filter>
                 <email-status :emails="emailsToShow"></email-status>
             </div>
             
             <div class="emails-container">
-                <email-list :emails="emailsToShow"></email-list>
+                <div class="email-list-wrapper">
+                    <div class="email-list-nav">    
+                        <select class="filter-select" v-model="filterType" :emails="showEmailsBySelect" >
+                            <option value="all">All</option>
+                            <option value="read">Read</option>
+                            <option value="unread">Unread</option>
+                        </select>
+                        <email-filter @filtered="setFilter"></email-filter>
+                        <select class="filter-select" v-model="sortType" @change="sortEmailsBySelect">
+                            <option value="sortByNewest">Sort By Newest</option>
+                            <option value="sortByOldest">Sort By Oldest</option>
+                            <option value="sortBySubject">Sort By Subject</option>
+                        </select>
+                    </div>
+                    <div>    
+                        <email-list :emails="emailsToShow"></email-list>
+                    </div>
+                </div>
                 <div class="info-container">
                     <router-view></router-view>
                 </div>  
@@ -77,8 +82,6 @@ export default {
             return this.filteredEmails.filter(email => email.subject.toLowerCase().includes(this.filterBy.term.toLowerCase()) ||
                 email.body.toLowerCase().includes(this.filterBy.term.toLowerCase()));
         },
-        // this is for the select
-        
     },
     created() {
         emailService.queryEmails()

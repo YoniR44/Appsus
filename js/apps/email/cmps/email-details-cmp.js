@@ -7,6 +7,9 @@ export default {
             <div class="email-header">
                 <span><b>{{email.subject}}</b></span>
                 <div>
+                    <router-link :to="'/email-app/email-compose'">                        
+                        <button class="reply-btn" @click="replyEmail">Reply</button>
+                    </router-link>
                     <button class="unread-btn" @click="unreadEmail">Unread</button>
                     <button class="delete-btn" @click="deleteEmail">Delete</button>
                 </div>
@@ -52,6 +55,10 @@ export default {
                 this.email = email;
                 eventBus.$emit('statusChanged');
             });
+        },
+        replyEmail() {
+            eventBus.$emit('openReply', this.email.subject);
+            
         }
     }
 }

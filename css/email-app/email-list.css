@@ -1,3 +1,23 @@
+.email-list-container {
+    height: 65vh;
+    overflow: auto;
+    width: 280px;
+    min-width: 280px;
+    margin-top: 5px;
+}
+
+.email-list-container::-webkit-scrollbar {
+    width: 0.25em;
+}
+
+.email-list-container::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(75, 21, 173, 0.3);
+}
+
+.email-list-container::-webkit-scrollbar-thumb {
+    background-color: rgb(24, 1, 1);
+}
+
 .email-list {
     list-style: none;
     padding-inline-start: 0px;

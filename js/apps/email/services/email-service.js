@@ -8,8 +8,6 @@ export default {
     updateEmailStatus,
     addEmail,
     sortByTime,
-    sortByReverseTime,
-    sortBySubject
 }
 
 const EMAILS_KEY = 'emails_key'
@@ -93,16 +91,5 @@ function addEmail(subject, body) {
 
 function sortByTime(emails) {
     emails.sort((email1, email2) => (email1.timestamp > email2.timestamp) ? 1 : -1 );
-    return Promise.resolve();
-}
-
-function sortByReverseTime(emails) {
-    emails.sort((email1, email2) => (email1.timestamp < email2.timestamp) ? 1 : -1 );
-    return Promise.resolve();
-
-}
-
-function sortBySubject(emails) {
-    emails.sort((email1, email2) => (email1.subject < email2.subject) ? 1 : -1 );
     return Promise.resolve();
 }

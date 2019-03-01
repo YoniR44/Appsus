@@ -17,8 +17,17 @@
     flex-direction: row;
 }
 
+.email-list-wrapper {
+    margin-top: 3px;
+}
+
+.email-list-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
 .info-container {
-    height: 60vh;
+    height: 70vh;
     width: 80vw;
     border: 1px solid black;
     margin: 3px;
@@ -37,7 +46,7 @@
 }
 
 .filter-select {
-    width: 140px;
+    width: 70px;
     height: 30px;
     border: 1px solid black;
     display: flex;
