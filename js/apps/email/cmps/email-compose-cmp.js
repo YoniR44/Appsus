@@ -2,8 +2,10 @@ import emailService from '../services/email-service.js';
 import { eventBus } from '../../../event-bus.js';
 
 export default {
+    name: 'child2',
     template: `
             <form class="email-form">
+                <div> v-model = {{subject}} </div>
                 <input class="email-form-subject" type="text" v-model="subject" placeholder="Enter subject" required>
                 <button class="email-form-submit" type="submit" @click="saveEmail">Send</button>
                 <hr>
@@ -12,7 +14,7 @@ export default {
     `,
     data() {
         return {
-            subject: '',
+            subject: this.$route.params.id,
             body: '',
         }
     },
@@ -27,14 +29,22 @@ export default {
         },
     },
     created() {
-        // eventBus.$on('openReply2', (emailSubject) => {
-        //     this.subject = emailSubject;
+        // eventBus.$on('openReply', emailSubject => {
+        //     this.subject = emailSubject});
         //     console.log(this.subject); // prints right value   
-        // })
-        
-        // console.log(this.subject); // prints old value
     },
     components: {
         emailService
-    }
+    },
+
+    // watch: {
+    //     something(){
+    //        if(this.something) console.log('hmm');
+    //     }
+    // }
+    // computed: {
+    //     something(){
+    //         return this.subject;
+    //     }
+    // }
 }

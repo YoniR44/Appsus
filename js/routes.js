@@ -13,7 +13,7 @@ const routes = [
     {
         path: '/email-app', component: emailApp, children: [
             { path: '/email-app/email/:emailId', component: emailDetails },
-            { path: '/email-app/email-compose', component: emailCompose },
+            { name: 'eCompose',path: '/email-app/email-compose', component: emailCompose },
         ]
     },
     {
