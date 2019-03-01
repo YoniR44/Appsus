@@ -6,7 +6,7 @@ export default {
     template: `
         <div class="percent-bar" >         
             <div class="progress-bar" 
-                :style="{ width: readPercent + '%', backgroundColor: 'lightblue', height: '100%', position: 'absolute', left: '0' }">
+                :style="{ width: readPercent + '%', backgroundColor: 'rgba(91, 209, 238, 0.7)', height: '100%', position: 'absolute', left: '0' }">
             </div>
             <span class="percent-status" style="z-index: 1">{{readPercent}}%</span>
         </div>

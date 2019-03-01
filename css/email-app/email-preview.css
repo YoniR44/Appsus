@@ -1,5 +1,5 @@
 .single-email {
-    background-color: rgb(156, 216, 231);
+    background-color: rgba(91, 209, 238, 0.7);
     border: 1px solid black;
     margin: 0 1px 1px 1px;
     padding-left: 5px;
@@ -20,7 +20,7 @@
     background-color: whitesmoke;
 }
 
-.email-preview-body, .email-preview-subject {
+.email-preview-body, .email-preview-subject, .email-preview-sender {
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
