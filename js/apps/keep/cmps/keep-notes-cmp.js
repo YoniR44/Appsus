@@ -48,7 +48,10 @@ export default {
                 this.currActiveIndex = index;
                 return;
             }
-            // console.log('clicked palette!',this.isActive);      
+            if (ev.target.classList.contains('btn-tack')) {
+                this.notes[index].pinned = !this.notes[index].pinned;
+                return;
+            }   
             if (ev.target.tagName === 'TD') {
                 this.notes[index].bgnd = ev.target.style.backgroundColor;
                 this.currActiveIndex = -1;
