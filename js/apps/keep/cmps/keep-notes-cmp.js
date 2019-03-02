@@ -1,3 +1,4 @@
+import keepService from '../services/keep-service.js'
 import keepDisplayNote from './keep-display-note-cmp.js'
 
 export default {
@@ -50,11 +51,13 @@ export default {
             }
             if (ev.target.classList.contains('btn-tack')) {
                 this.notes[index].pinned = !this.notes[index].pinned;
+                keepService.updateNoteProperty(index,'pinned',this.notes[index].pinned);
                 return;
             }   
             if (ev.target.tagName === 'TD') {
                 this.notes[index].bgnd = ev.target.style.backgroundColor;
                 this.currActiveIndex = -1;
+                keepService.updateNoteProperty(index,'bgnd',this.notes[index].pinned);
                 return;
             }
         },
