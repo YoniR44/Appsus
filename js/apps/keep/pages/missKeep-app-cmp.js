@@ -54,7 +54,7 @@ export default {
     },
     methods: {
         getData() {
-            storageService.getDataFromFile('notes')
+            storageService.getDataFromFileGit('notes')
                 .then(notes => this.notes = notes);
             storageService.getDataFromFileGit('imgUrls')
                 .then( urls => this.imgUrls = urls);
