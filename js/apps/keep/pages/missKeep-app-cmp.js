@@ -23,6 +23,16 @@ export default {
                 <span>Selected: {{ selected }}</span>
                 <input v-model = "newText" type="text" placeholder="" @keyup.enter= "hmm">
                 <span>Selected: {{ newText }}</span>
+                <label class="form-label">
+                      Body
+                      <div> 
+                     <textarea v-model = "newText" placeholder="New Note"
+                            rows="5" class="form-control">
+                          
+                     </textarea>
+                     <button @click = "addNewNote"> Save </button>
+                     </div>
+                </label>
                 <hr>
             </header>
             <keep-todo v-if="selected"></keep-todo>
@@ -72,13 +82,16 @@ export default {
                 keepStorage.initGlobals(this.notes, this.imgUrls);
             }, 3000);
         },
-    
-    saveNotesLocally() {
-        storageService.saveToFile(JSON.stringify(this.notes), 'notes.json');
-    },
-    saveImgUrlsLocally() {
-        storageService.saveToFile(JSON.stringify(this.imgUrls), 'imgUrls.json');
-    }
+
+        saveNotesLocally() {
+            storageService.saveToFile(JSON.stringify(this.notes), 'notes.json');
+        },
+        saveImgUrlsLocally() {
+            storageService.saveToFile(JSON.stringify(this.imgUrls), 'imgUrls.json');
+        },
+        addNewNote(){
+            keepStorage.addNote(this.newText);
+        }
     },
     computed: {
         showPendingStatus() { return (!this.selected) ? true : false; }

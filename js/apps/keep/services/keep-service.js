@@ -1,8 +1,12 @@
 import storageService from '../../../services/storage-service.js'
+import utilService from '../../../services/util-service.js'
+
 export default {
    updateNoteProperty,
    initGlobals,
-   filterNotes
+   filterNotes,
+   removeNote,
+   addNote
 }
 
 var gNotes;
@@ -27,6 +31,24 @@ function updateNoteProperty(index,property,value) {
 
 function filterNotes(){
     gNotes.sort((note1,note2) =>  note2.pinned - note1.pinned );
+}
+
+function removeNote(index){
+    gNotes.splice(index,1);
+    saveGlobals();
+}
+
+function addNote(text){
+   function createNote(){
+       return {
+           id: utilService.makeId(11),
+           pinned: false,
+           content: text,
+           bgnd: 'white'
+       };
+   }
+   gNotes.push(createNote());
+   saveGlobals();
 }
 
 
