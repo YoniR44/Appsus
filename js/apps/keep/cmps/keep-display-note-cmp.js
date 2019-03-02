@@ -33,8 +33,8 @@ export default {
                      <p> {{content}} </p>
                </div>
                <div v-if = "toShowDiv">
-               <button class = "btn-remove fa fa-remove"></button> 
-               <button  v-show = "toShowBtn" class = "btn-palette fa fa-paint-brush">
+               <button class = "btn-remove fa fa-times"></button> 
+               <button  v-show = "toShowBtn" class = "btn-palette fa fa-palette">
                </button>
                <table class = "dropdown-table" v-show = "toShowTbl">
                     <tbody>

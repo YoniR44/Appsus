@@ -69,7 +69,6 @@
 }
 
 .keep-notes .btn-palette {
-   color: red;
    position: absolute;
    right: 0;
    bottom: 0; 
@@ -77,7 +76,6 @@
 }
 
 .keep-notes .btn-remove {
-   color: red;
    position: absolute;
    left: 0;
    bottom: 0; 
@@ -101,24 +99,6 @@
 .keep-notes .dropdown-table td{
   outline: 1px solid black
 }
-
-/* .k
-/* .keep-notes .btn-palette-dropdown li {
-   right :0;
-   bottom: 0; 
-   color:green;
-   padding: 0;
-   margin: 0;
-} */
-
-
-.keep-notes .btn-remove {
-   color: yellow;
-}
-
-.keep-notes .isActive .fa {
-}
-
 
  /* keep-Todo */
  .keep-todo .removed {
