@@ -18,7 +18,7 @@ li {
     height: 15vh;
     display: flex;
     justify-content: center;
-    background-color: orange;
+    background-color: rgba(91, 209, 238);
     color: black;
 }
 

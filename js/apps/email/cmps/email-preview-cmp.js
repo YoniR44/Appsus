@@ -5,8 +5,13 @@ export default {
     props: ['email'],
     template: `
         <li class="single-email" :class="{'read-email': email.isRead}" @click="updateReadStatus">
-            <span class="email-preview-subject"><b>{{email.subject}}</b></span>
-            <div class="email-preview-body">{{email.body}}</div>
+            <div class="email-sender-icon">{{email.fromWho}}</div>
+            <div class="email-preview-center">
+                <div class="email-preview-sender">{{email.fromWho}}</div>
+                <div class="email-preview-subject"><b>{{email.subject}}</b></div>
+                <div class="email-preview-body">{{email.body}}</div>
+            </div>
+            <div class="email-sender-time">{{email.sentAt}}</div>
         </li>
     `,
     methods: {

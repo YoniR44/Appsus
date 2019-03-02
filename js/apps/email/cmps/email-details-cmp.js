@@ -7,20 +7,26 @@ export default {
             <div class="email-header">
                 <span><b>{{email.subject}}</b></span>
                 <div>
-                    <router-link :to="{name: 'eCompose', params: {id:email.subject}}">                        
-                    <button class="reply-btn" @click="replyEmail">Reply</button>
+                    <router-link :to="{name: 'eCompose', params: {subject:email.subject, sender:email.fromWho}}">                        
+                        <button class="reply-btn" @click="replyEmail"><i class="fas fa-reply"></i></button>
                     </router-link>
-                    <button class="unread-btn" @click="unreadEmail">Unread</button>
-                    <button class="delete-btn" @click="deleteEmail">Delete</button>
-                    </div>
-                    </div> 
-                    <hr>
-                    <div class="email-body">
-                    {{email.body}}
-                    </div>   
-                    </section>
-                    `,
-                    //<button class="reply-btn" @click="replyEmail">Reply</button>
+                    <button class="unread-btn" @click="unreadEmail"><i class="fas fa-envelope-open"></i></button>
+                    <button class="delete-btn" @click="deleteEmail"><i class="far fa-trash-alt"></i></button>
+                </div>
+            </div> 
+            <hr>
+            <div class="email-body">
+                <div class="email-sender-info">
+                    <div class="email-sender-icon">{{email.fromWho}}</div>        
+                    <div>
+                        <div class="email-sender">{{email.fromWho}}</div>
+                        <div class="email-sender-time">{{email.sentAt}}</div>
+                    </div>    
+                </div>
+                {{email.body}}
+            </div>   
+        </section>
+    `,
     data() {
         return {
             email: null,
@@ -57,9 +63,9 @@ export default {
                 eventBus.$emit('statusChanged');
             });
         },
-        replyEmail() {
-            eventBus.$emit('openReply', this.email.subject);
+        // replyEmail() {
+        //     eventBus.$emit('openReply', this.email.subject);
             
-        }
+        // }
     }
 }
