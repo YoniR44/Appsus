@@ -16,10 +16,13 @@ export default {
     `,
     methods: {
         updateReadStatus() {
+            if (this.email.location !== 'inbox') return;
+            console.log(this.email.location);
+            
             var emailId = this.email.id;
             emailService.updateEmailStatus(emailId, true)
             .then(email => {
-                this.email = email;
+                // this.email = email;
                 eventBus.$emit('statusChanged');
             });
         }

@@ -6,6 +6,7 @@
     margin: 5px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .email-sender-icon {
@@ -30,4 +31,16 @@
     align-items: center;
     height: 50px;
     margin: 10px 0;
+}
+
+.reply-btn, .unread-btn, .delete-btn {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: darkseagreen;
+}
+
+.reply-btn:hover, .unread-btn:hover, .delete-btn:hover {
+    background-color: darkcyan;
 }

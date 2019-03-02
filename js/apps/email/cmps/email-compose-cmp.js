@@ -5,8 +5,11 @@ export default {
     name: 'child2',
     template: `
             <form class="email-form">
-                <input class="email-form-sender" type="text" v-model="sender" placeholder="abc123@howdy.com" required>
-                <button class="email-form-submit" type="submit" @click="saveEmail"><i class="far fa-paper-plane"></i> Send</button>
+                <div class="flex space-between align-center">
+                    <label>To: </label>
+                    <input class="email-form-sender" type="text" v-model="sender" placeholder="abc123@howdy.com" required>
+                    <button class="email-form-submit" type="submit" @click="saveEmail"><i class="far fa-paper-plane"></i> Send</button>
+                </div>
                 <hr>
                 <input class="email-form-subject" type="text" v-model="subject" placeholder="Enter subject" required>
                 <hr>
@@ -16,7 +19,7 @@ export default {
     data() {
         return {
             sender: this.$route.params.sender,
-            subject: 'Re: ' + this.$route.params.subject,
+            subject: this.$route.params.subject,
             body: '',
         }
     },

@@ -6,17 +6,22 @@ import emailStatus from '../cmps/email-status-cmp.js';
 export default {
     template: `
         <section class="email-app-body" v-if="emails">
-            <div class="email-tools">
-                <router-link :to="'/email-app/email-compose'">
-                    <button class="compose-btn">Compose Email</button>
-                </router-link>
-                <email-status :emails="emailsToShow"></email-status>
-            </div>
-            
             <div class="emails-container">
+                <div class="email-navbar">
+                    <router-link :to="'/email-app/email-compose'">
+                        <button class="compose-btn" @click="notEmpty = true">
+                            <div><i class="fas fa-plus"></i></div>
+                            <div>Compose</div> 
+                        </button>
+                    </router-link>
+                    <div class="email-navbar-item" @click="changeEmailSection('inbox')">Inbox</div>
+                    <div class="email-navbar-item" @click="changeEmailSection('sent')">Sent</div>
+                    <div class="email-navbar-item" @click="changeEmailSection('deleted')">Deleted</div>
+                    <email-status :emails="emailsToShow"></email-status>
+                </div>
                 <div class="email-list-wrapper">
                     <div class="email-list-nav">    
-                        <select class="filter-select" v-model="filterType" :emails="showEmailsBySelect" >
+                        <select class="filter-select" v-model="filterType" :emails="showEmailsBySelect">
                             <option value="all">All</option>
                             <option value="read">Read</option>
                             <option value="unread">Unread</option>
@@ -28,11 +33,11 @@ export default {
                             <option value="sortBySubject">Sort By Subject</option>
                         </select>
                     </div>
-                    <div>    
+                    <div class="email-list" @click="notEmpty = true">    
                         <email-list :emails="emailsToShow"></email-list>
                     </div>
                 </div>
-                <div class="info-container">
+                <div class="info-container" v-show="notEmpty">
                     <router-view></router-view>
                 </div>  
             </div>
@@ -47,6 +52,8 @@ export default {
             filterType: 'all',
             sortType: 'sortByNewest',
             filteredEmails: null,
+            emailType: 'inbox',
+            notEmpty: false
         }
     },
     methods: {
@@ -56,11 +63,11 @@ export default {
         },
         sortEmailsBySelect() {
             var val = this.sortType;
-            
+
             if (val === 'sortByNewest') {
-                this.emails.sort((email1, email2) => (email1.timestamp > email2.timestamp) ? 1 : -1);
+                this.emails.sort((email1, email2) => (email1.sentAt < email2.sentAt) ? 1 : -1);
             } else if (val === 'sortByOldest') {
-                this.emails.sort((email1, email2) => (email1.timestamp < email2.timestamp) ? 1 : -1);
+                this.emails.sort((email1, email2) => (email1.sentAt > email2.sentAt) ? 1 : -1);
             } else if (val === 'sortBySubject') {
                 this.emails.sort((email1, email2) => (email1.subject.toUpperCase() > email2.subject.toUpperCase()) ? 1 : -1);
             }
@@ -68,9 +75,14 @@ export default {
         showEmailsBySelect() {
             var val = this.filterType;
 
-            if (val === 'read') return this.emails.filter(email => email.isRead === true);            
+            if (val === 'read') return this.emails.filter(email => email.isRead === true);
             else if (val === 'unread') return this.emails.filter(email => email.isRead === false);
-            else return this.emails.filter(email => email); 
+            else return this.emails.filter(email => email);
+        },
+        changeEmailSection(section) {
+            this.emailType = section;
+            emailService.queryEmails(this.emailType)
+                .then(emails => this.emails = emails)
         }
     },
     computed: {
@@ -78,13 +90,15 @@ export default {
         emailsToShow() {
             if (!this.emails) return;
             this.filteredEmails = this.showEmailsBySelect();
-            
+
             return this.filteredEmails.filter(email => email.subject.toLowerCase().includes(this.filterBy.term.toLowerCase()) ||
                 email.body.toLowerCase().includes(this.filterBy.term.toLowerCase()));
         },
+        
     },
     created() {
-        emailService.queryEmails()
+        this.emailType = 'inbox'
+        emailService.queryEmails(this.emailType)
             .then(emails => this.emails = emails)
     },
     components: {

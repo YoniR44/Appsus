@@ -10,9 +10,13 @@ export default {
     sortByTime,
 }
 
-const EMAILS_KEY = 'emails_key'
+const EMAILS_KEY = 'emails_key';
+const SENT_EMAILS_KEY = 'sent_emails_key';
+const DELETED_EMAILS_KEY = 'deleted_emails_key';
 
 var gEmails = [];
+var gSentEmails = [];
+var gDeletedEmails = [];
 
 createEmails();
 sortByTime(gEmails);
@@ -25,21 +29,29 @@ function _createEmail(subject, body, fromWho) {
         body: body,
         isRead: false,
         sentAt: currTime.getDate() + '/' + (currTime.getMonth() + 1) + '/' + currTime.getFullYear() + '\n' + currTime.getHours() + ':' + currTime.getMinutes(),
-        fromWho: fromWho
+        fromWho: fromWho,
+        location: 'inbox'
     }
     return email;
 }
 
 function createEmails() {
     // loads emails from local storage
+    
+    gSentEmails = storageService.load(SENT_EMAILS_KEY);
+    if (!gSentEmails) gSentEmails = [];
+
+    gDeletedEmails = storageService.load(DELETED_EMAILS_KEY);
+    if (!gDeletedEmails) gDeletedEmails = [];
+
     gEmails = storageService.load(EMAILS_KEY);
     if (gEmails && gEmails.length) return;
-    
+
     // if local storage is empty creates data
     var emails = [];
     emails.push(_createEmail('Whats up with Vue', 'Sawsan Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!', 'abc@codingdude.com'));
     emails.push(_createEmail('Howdy', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!', 'abc@codingdude.com'));
-    emails.push(_createEmail('Join our team!', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!', 'abc@codingdude.com'));
+    emails.push(_createEmail('Join our team!', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!', 'abc@codingdude.com'));
     emails.push(_createEmail('Become a member!', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!', 'abc@codingdude.com'));
     emails.push(_createEmail('Are you available??', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!', 'abc@codingdude.com'));
     emails.push(_createEmail('Meet tommorrow?', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dolorum. In beatae voluptate deleniti iusto accusantium, nihil facilis sapiente similique distinctio temporibus aliquam repudiandae ab dolor nam quaerat sunt a!', 'abc@codingdude.com'));
@@ -53,8 +65,10 @@ function createEmails() {
     gEmails = emails;
 }
 
-function queryEmails() {
-    return Promise.resolve(gEmails);
+function queryEmails(emailType) {
+    if (emailType === 'inbox') return Promise.resolve(gEmails);
+    else if (emailType === 'sent') return Promise.resolve(gSentEmails);
+    else if (emailType === 'deleted') return Promise.resolve(gDeletedEmails);
 }
 
 function getEmailById(emailId) {
@@ -66,9 +80,15 @@ function getEmailById(emailId) {
 
 function deleteEmail(emailId) {
     var emailIdx = gEmails.findIndex(email => emailId === email.id);
-    gEmails.splice(emailIdx, 1);
+    var deleted = gEmails.splice(emailIdx, 1);
     storageService.store(EMAILS_KEY, gEmails);
     
+    deleted[0].location = 'deleted';
+    console.log(deleted[0].location);
+    
+    gDeletedEmails.push(deleted[0]);
+    storageService.store(DELETED_EMAILS_KEY, gDeletedEmails);
+
     // returns the id of email above for presenting
     if (gEmails && gEmails.length) {
         return emailIdx > 0 ? Promise.resolve(gEmails[emailIdx - 1].id) : Promise.resolve(gEmails[emailIdx].id);
@@ -83,15 +103,18 @@ function updateEmailStatus(emailId, status) {
     return Promise.resolve(email);
 }
 
-function addEmail(subject, body) {
-    var email = _createEmail(subject, body);    
+function addEmail(subject, body, sender) {
+    var email = _createEmail(subject, body, sender);    
     gEmails.push(email);
     storageService.store(EMAILS_KEY, gEmails);
+    
+    gSentEmails.push(email);
+    storageService.store(SENT_EMAILS_KEY, gSentEmails);    
     sortByTime(gEmails);
     return Promise.resolve(email);
 }
 
 function sortByTime(emails) {
-    emails.sort((email1, email2) => (email1.timestamp > email2.timestamp) ? 1 : -1 );
+    emails.sort((email1, email2) => (email1.sentAt > email2.sentAt) ? 1 : -1 );
     return Promise.resolve();
 }

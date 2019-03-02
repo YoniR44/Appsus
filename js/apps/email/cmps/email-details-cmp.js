@@ -7,8 +7,8 @@ export default {
             <div class="email-header">
                 <span><b>{{email.subject}}</b></span>
                 <div>
-                    <router-link :to="{name: 'eCompose', params: {subject:email.subject, sender:email.fromWho}}">                        
-                        <button class="reply-btn" @click="replyEmail"><i class="fas fa-reply"></i></button>
+                    <router-link :to="{name: 'eCompose', params: {subject:'Re: ' + email.subject, sender:email.fromWho}}">                        
+                        <button class="reply-btn"><i class="fas fa-reply"></i></button>
                     </router-link>
                     <button class="unread-btn" @click="unreadEmail"><i class="fas fa-envelope-open"></i></button>
                     <button class="delete-btn" @click="deleteEmail"><i class="far fa-trash-alt"></i></button>
@@ -63,9 +63,5 @@ export default {
                 eventBus.$emit('statusChanged');
             });
         },
-        // replyEmail() {
-        //     eventBus.$emit('openReply', this.email.subject);
-            
-        // }
     }
 }
