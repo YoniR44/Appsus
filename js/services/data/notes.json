@@ -2,31 +2,37 @@
   {
     "id": "OXeMG8wNskc",
     "pinned": false,
-    "content": "some random note 1"
+    "content": "some random note 1",
+    "bgnd": "white"
   },
   {
     "id": "OXeMG8wNskb",
     "pinned": false,
-    "content": "some random note 2"
+    "content": "some random note 2",
+    "bgnd": "white"
   },
   {
     "id": "OXeMG8wNskd",
     "pinned": true,
-    "content": "some random note 3"
+    "content": "some random note 3",
+    "bgnd": "white"
   },
   {
     "id": "OXeMG8wNsad",
     "pinned": false,
-    "content": "some random note 4"
+    "content": "some random note 4",
+    "bgnd": "white"
   },
   {
     "id": "OXeMG8wNsbd",
     "pinned": true,
-    "content": "some random note 5"
+    "content": "some random note 5",
+    "bgnd": "white"
   },
   {
     "id": "OXeMG8wNscd",
     "pinned": false,
-    "content": "some random note 6"
+    "content": "some random note 6",
+    "bgnd": "white"
   }
 ]

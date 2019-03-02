@@ -1,4 +1,5 @@
 import storageService from '../../../services/storage-service.js';
+import keepStorage from '../services/keep-service.js'
 import keepNotes from '../cmps/keep-notes-cmp.js'
 import keepImages from '../cmps/keep-images-cmp.js'
 import keepTodo from '../cmps/keep-todo-cmp.js'
@@ -22,6 +23,16 @@ export default {
                 <span>Selected: {{ selected }}</span>
                 <input v-model = "newText" type="text" placeholder="" @keyup.enter= "hmm">
                 <span>Selected: {{ newText }}</span>
+                <label class="form-label">
+                      Body
+                      <div> 
+                     <textarea v-model = "newText" placeholder="New Note"
+                            rows="5" class="form-control">
+                          
+                     </textarea>
+                     <button @click = "addNewNote"> Save </button>
+                     </div>
+                </label>
                 <hr>
             </header>
             <keep-todo v-if="selected"></keep-todo>
@@ -40,7 +51,7 @@ export default {
             selected: '',
             newText: '',
             notes: [],
-            imgUrls:[],
+            imgUrls: [],
             cmp: {
                 type: 'keepNotes',
                 data: this.notes
@@ -54,23 +65,36 @@ export default {
     },
     methods: {
         getData() {
-            storageService.getDataFromFileGit('notes')
-                .then(notes => this.notes = notes);
-            storageService.getDataFromFileGit('imgUrls')
-                .then( urls => this.imgUrls = urls);
-            setTimeout(() => { this.selected = 'text'; console.log('after timeout...', this.notes);
-            console.log('after timeout...', this.imgUrls) }, 3000);
-            console.log('cmp', this.cmp);
+            let storageNotes = storageService.load('keepNotes');
+            let storageImgs = storageService.load('keepImgs');
+            console.log(storageNotes);
+            if (!storageNotes || !storageImgs || storageNotes === null || storageImgs === null) {
+                storageService.getDataFromFileGit('notes')
+                    .then(notes => this.notes = notes);
+                storageService.getDataFromFileGit('imgUrls')
+                    .then(urls => this.imgUrls = urls);
+            } else {
+                this.notes = storageNotes;
+                this.imgUrls = storageImgs;
+            }
+            setTimeout(() => {
+                this.selected = 'text'; console.log('after timeout...', this.notes);
+                keepStorage.initGlobals(this.notes, this.imgUrls);
+            }, 3000);
         },
-        saveNotesLocally(){
+
+        saveNotesLocally() {
             storageService.saveToFile(JSON.stringify(this.notes), 'notes.json');
         },
-        saveImgUrlsLocally(){
+        saveImgUrlsLocally() {
             storageService.saveToFile(JSON.stringify(this.imgUrls), 'imgUrls.json');
+        },
+        addNewNote(){
+            keepStorage.addNote(this.newText);
         }
     },
     computed: {
-        showPendingStatus() { return (!this.selected) ? true : false;}
+        showPendingStatus() { return (!this.selected) ? true : false; }
     },
     watch: {
         selected() {
@@ -86,7 +110,7 @@ export default {
 
     mounted() {
         this.getData(),
-        this.$router.push({ path: '/missKeep-app' });
+            this.$router.push({ path: '/missKeep-app' });
     }
 
 }
