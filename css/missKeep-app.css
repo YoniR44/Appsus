@@ -84,6 +84,12 @@
 
 .keep-notes .btn-remove {
    position: absolute;
+   left: 2rem;
+   bottom: 0; 
+}
+
+.keep-notes .btn-tack {
+   position: absolute;
    left: 0;
    bottom: 0; 
 }
