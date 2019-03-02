@@ -68,6 +68,13 @@
    outline: 1px solid darkviolet;
 }
 
+.keep-notes .btn-checked {
+   position: absolute;
+   background-color: transparent;
+   border-width:0;
+   left: 0;
+   top: 0; 
+}
 .keep-notes .btn-palette {
    position: absolute;
    right: 0;

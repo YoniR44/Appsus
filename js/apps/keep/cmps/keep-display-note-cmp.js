@@ -28,7 +28,7 @@ export default {
     template: `
            <li class = "li-wrapper" :style="{background: background}" >
            <div>
-               <button class = "btn-pin fa fa-map-pin"></button>
+               <button class = "btn-checked fa fa-check"></button>
                <div> 
                      <p> {{content}} </p>
                </div>
