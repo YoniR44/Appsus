@@ -10,10 +10,6 @@ export default {
     },
     data() {
         return {
-            colors: [{ hex: 'black' },
-            { hex: 'green' },
-            { hex: 'red' }
-            ],
             colors1: [{ hex: 'black' },
             { hex: 'green' },
             { hex: 'white' },

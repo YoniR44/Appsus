@@ -21,14 +21,12 @@ function saveGlobals(){
 
 function updateNoteProperty(index,property,value) {
   gNotes[index].property = value;
-  saveGlobals();
-  filterNotes();
+  if (property === 'pinned') filterNotes();
+  saveGlobals(); 
 }
 
 function filterNotes(){
     gNotes.sort((note1,note2) =>  note2.pinned - note1.pinned );
-    saveGlobals();
-    console.log('sorted',gNotes);
 }
 
 

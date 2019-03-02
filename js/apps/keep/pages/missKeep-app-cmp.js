@@ -71,11 +71,6 @@ export default {
                 this.selected = 'text'; console.log('after timeout...', this.notes);
                 keepStorage.initGlobals(this.notes, this.imgUrls);
             }, 3000);
-            // } else {
-            // this.notes = storageNotes;
-            // this.imgUrls = storageImgs;
-            // this.selected = 'text';
-            // keepStorage.initGlobals(this.notes, this.imgUrls);
         },
     
     saveNotesLocally() {
