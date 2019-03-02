@@ -60,18 +60,24 @@
    position: relative;
    right: 0;
    bottom: 0;
-   overflow: hidden
+   overflow: hidden;
 }
 .keep-notes li {
    margin: 0.3rem 0.5rem 0.3rem 0.5rem;
    color: darkmagenta;
    outline: 1px solid darkviolet;
+   cursor: zoom-in;
 }
 
+.keep-notes .fa {
+   cursor: pointer
+}
 .keep-notes .btn-checked {
+   cursor: none;
    position: absolute;
    background-color: transparent;
    border-width:0;
+   color: darkmagenta;
    left: 0;
    top: 0; 
 }
