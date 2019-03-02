@@ -5,7 +5,8 @@ export default {
         index: Number,
         background: String,
         isOutside: Boolean,
-        currIndex: Number
+        currIndex: Number,
+        pinned: Boolean
     },
     data() {
         return {
@@ -28,7 +29,7 @@ export default {
     template: `
            <li class = "li-wrapper" :style="{background: background}" >
            <div>
-               <button class = "btn-checked fa fa-check"></button>
+               <button v-show = "pinned" class = "btn-checked fa fa-check"></button>
                <div> 
                      <p> {{content}} </p>
                </div>
@@ -63,8 +64,8 @@ export default {
             return !this.toShowTbl;
         },
         toShowDiv(){
-             return !this.isOutside && this.currIndex === this.index
-        }
+             return !this.isOutside && this.currIndex === this.index;
+        },
     },
     created() {
     }

@@ -27,7 +27,9 @@ export default {
                     :isActive = "currActiveIndex"
                     :isOutside = "isOutside"
                     :currIndex = "currIndex"
-                    :content = "currNote.content" :index = "index"
+                    :pinned = "currNote.pinned"
+                    :content = "currNote.content" 
+                    :index = "index"
                     :background = "currNote.bgnd">
                 </keep-display-note>
             </div>    
