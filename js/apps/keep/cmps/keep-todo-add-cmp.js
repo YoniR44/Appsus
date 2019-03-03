@@ -1,5 +1,6 @@
 import utilService from '../../../services/util-service.js';
 import keepTodoDisplay from './keep-todo-display-cmp.js';
+import { eventBus } from '../../../event-bus.js';
 
 export default {
     props: {
@@ -11,7 +12,7 @@ export default {
     template: `
             <div>
                <div class = "flex justify-center">
-                    <input @keyup.enter="addTodo" v-model="newNote"
+                    <input @keyup.enter="addTodo(newNote)" v-model="newNote"
                         placeholder="add new note" type="text"
                         class="form-control" maxlength="50"  >
                 </div> 
@@ -34,8 +35,8 @@ export default {
                 this.removeTodo(index);
             }       
         },
-        addTodo() {  
-            let text = this.newNote.trim();
+        addTodo(note) {  
+            let text = note.trim();
             if (text) {
                 this.notesList.push({ text: text, checked: false,
                 id: utilService.makeId(11)});
@@ -46,6 +47,11 @@ export default {
             this.notesList.splice(index,1);
         } 
     },
-    create(){
+    created(){
+        eventBus.$on('addTodo', todo => {
+            console.log('receiving addTodo...');
+            let content = todo;
+            this.addTodo(content);  
+        });
     }
 }

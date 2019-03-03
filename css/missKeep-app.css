@@ -235,6 +235,13 @@
     width:4rem; 
 }
 
+.keep-notes .btn-todo {
+   position: absolute;
+   right: 0;
+   top: 0; 
+   width:4rem; 
+}
+
 .keep-notes .btn-email{
    position: absolute;
    left: 2rem;

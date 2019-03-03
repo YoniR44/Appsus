@@ -92,6 +92,13 @@ export default {
                 console.log('email');
                 return;
             }
+            if (ev.target.classList.contains('btn-todo')) {
+                let todo = this.notes[index].content;
+                console.log('emitting addTodo');
+                eventBus.$emit('addTodo', todo);
+                return;
+            }
+
             if (ev.target.tagName === 'TD') {
                 this.notes[index].bgnd = ev.target.style.backgroundColor;
                 this.currActiveIndex = -1;
