@@ -4,6 +4,7 @@ export default {
     },
     template: `
            <li>
+               <p> hhhhhhhhhh </p>
                <img :src = "url.url"> </img>
            </li>    
         `,

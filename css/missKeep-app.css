@@ -1,4 +1,7 @@
 /* Base */
+.missKeep-app-body  {
+   flex: 1;
+ }
 .missKeep-app-body hr {
   color:darkmagenta;
 }
@@ -46,19 +49,19 @@
     font-size: 1.5rem;
     font-weight: bold;
     background-color: lightgray;
-    max-width:90rem;
+    /* max-width:90rem; */
     flex-wrap: wrap;
-    color:snow;
+    flex: 1;
+    color:red;
  }
  .keep-images li {
     padding: 0 0.5rem 0 0.5rem;
+    width: auto;
     height: auto;
  }
 
  /* keep-notes */
-.keep-notes-header {
-   outline: 2px solid darkmagenta;
-}
+
 .keep-notes-header .email-wrapper{
    background-color:lightgray;
    color:darkmagenta;
@@ -87,7 +90,7 @@
     outline: 1px ridge darkmagenta;
  }
  .keep-notes .input-search{
-    width: 10rem;
+    width: 12rem;
     outline: 1px ridge darkmagenta;
  }
  .keep-notes textarea {
@@ -187,7 +190,7 @@
    overflow-y: scroll;
    /* overflow-x: scroll; */
    background-color:lightgray;
-   margin:0.3rem 0 0.3rem 0;
+   margin:0.3rem 1rem 0.3rem 1rem;
    outline: 1px solid darkmagenta;
    flex-direction: column;
 }
@@ -286,5 +289,17 @@
 
 .modal-mask textarea {
   font-size: 1rem;
+}
+
+@media (max-width: 570px){ 
+   .keep-notes-header .email-wrapper  {
+     display: none;
+   }
+}
+
+@media (max-width: 420px){ 
+   .keep-todo   {
+     display: none;
+   }
 }
  
