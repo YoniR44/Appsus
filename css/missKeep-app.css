@@ -59,6 +59,11 @@
 .keep-notes-header {
    outline: 2px solid darkmagenta;
 }
+.keep-notes-header .for-email{
+   background-color:yellow;
+   width:30rem;
+   height:10rem;
+}
  .keep-notes-input-wrapper {
     flex-direction: column;
     margin: 0.3rem 1rem 0.3rem 1rem;
@@ -123,9 +128,14 @@
     width:4rem; 
 }
 
-.keep-notes .btn-remove {
+.keep-notes .btn-email{
    position: absolute;
    left: 2rem;
+   bottom: 0; 
+}
+.keep-notes .btn-remove {
+   position: absolute;
+   left: 4rem;
    bottom: 0; 
 }
 

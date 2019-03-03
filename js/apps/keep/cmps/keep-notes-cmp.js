@@ -6,6 +6,7 @@ import { eventBus } from '../../../event-bus.js';
 export default {
     props: {
         data: Array,
+        mail: Object
     },
     components: {
         keepDisplayNote,
@@ -13,12 +14,14 @@ export default {
     },
     data() {
         return {
+            currMail: this.mail,
             notes: this.data,
             currActiveIndex: -1,
             isOutside: true,
             currIndex: -1,
             newText: '',
             filterStr: '',
+            emailId: ''
         }
     },
     // <keep-todo v-if="selected"></keep-todo>
@@ -35,6 +38,12 @@ export default {
                     </div> 
                 </div>
                 <keep-todo></keep-todo>
+                <div class = "for-email" <div v-for="(currNote,index) in notes" :key = "currNote.id"  
+                >
+                   <div v-if = "currNote.id === currMail.id"> 
+                     <p> {{currNote.content}} </p>
+                  </div>
+                </div>
             </div>
             <ul class = "flex align-center justify-center">
             <div v-for="(currNote,index) in notes" :key = "currNote.id"              
@@ -82,6 +91,15 @@ export default {
                 keepService.removeNote(index);
                 return;
             }
+            if (ev.target.classList.contains('btn-email')) {
+                // this.notes[index].pinned = !this.notes[index].pinned;
+                // keepService.updateNoteProperty(index,'pinned',this.notes[index].pinned);
+               this.currMail.id = this.notes[index].id;
+               this.currMail.content = this.notes[index].content;
+               keepService.saveEmail(this.notes[index]);
+               console.log('email');
+                return;
+            }
             if (ev.target.tagName === 'TD') {
                 this.notes[index].bgnd = ev.target.style.backgroundColor;
                 this.currActiveIndex = -1;
@@ -104,6 +122,12 @@ export default {
             this.newText = '';
         },
     },
+
+    // computed:{
+    //     chosenForEmail(){
+    //         return this.index === 1;
+    //     }
+    // },
 
     created() {
         console.log('keepNotes linked');
