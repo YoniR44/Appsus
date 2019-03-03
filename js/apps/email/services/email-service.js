@@ -29,6 +29,7 @@ function _createEmail(subject, body, fromWho) {
         body: body,
         isRead: false,
         sentAt: currTime.getDate() + '/' + (currTime.getMonth() + 1) + '/' + currTime.getFullYear() + '\n' + currTime.getHours() + ':' + currTime.getMinutes(),
+        timeStamp: +currTime,
         fromWho: fromWho,
         location: 'inbox'
     }
@@ -75,6 +76,13 @@ function getEmailById(emailId) {
     var email = gEmails.find(function(email) {
         return emailId === email.id;
     })
+console.log(email)
+    if (!email) {
+        email = gDeletedEmails.find(function(email) {
+            return emailId === email.id;
+        })
+    }
+
     return Promise.resolve(email);
 }
 
@@ -115,6 +123,6 @@ function addEmail(subject, body, sender) {
 }
 
 function sortByTime(emails) {
-    emails.sort((email1, email2) => (email1.sentAt > email2.sentAt) ? 1 : -1 );
+    emails.sort((email1, email2) => (email1.timeStamp < email2.timeStamp) ? 1 : -1 );
     return Promise.resolve();
 }

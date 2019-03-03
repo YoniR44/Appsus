@@ -13,6 +13,23 @@ export default {
                     <transition name="fade">   
                         <div class="alert alert-info" v-show="show"><img :src="myImg" alt="" class="myImg"></div>
                     </transition>
+                    <!-- <ul class="list-inline social-buttons">
+                        <li class="list-inline-item">
+                            <a href="https://github.com/YoniR44">
+                                <i class="fab fa-git"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.facebook.com/jonathan.ratzon.7">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                    </ul> -->
                     <p>Yes, I'm the guy in the picture</p>
                 </div>
             </div>    
@@ -44,14 +61,6 @@ export default {
         hisImg() {
             return `img/me.jpg`;
         },
-    },
-    created() {
-        interval = setInterval(() => { console.log('Its Time!') }, 1000);
-        // this.show = true;
-    },
-    destroyed() {
-        console.log('Going down...');
-        clearInterval(interval)
     },
     mounted() {
         this.animateImg();
