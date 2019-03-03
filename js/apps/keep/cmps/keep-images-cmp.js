@@ -55,7 +55,7 @@ export default {
         onClick(img, index, ev) {
             // console.log(ev.target.classList);
             if (ev.target.tagName !== 'BUTTON' && ev.target.tagName !== 'TD') {
-                this.$router.push({ name: 'imgRoute', params: { id: img.id, url: img.url, index: index } });
+                this.$router.push({ name: 'imgRoute', params: { id: img.id, url: img.url, index: index,bgnd: img.bgnd } });
                 return;
             }
             if (ev.target.classList.contains('btn-palette')) {

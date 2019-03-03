@@ -2,7 +2,8 @@ export default {
     data(){
         return {
             src:'',
-            index: ''
+            index: '',
+            bgnd: ''
         }
     },
     template: `
@@ -12,7 +13,7 @@ export default {
                     <h3>Pretty Picture</h3>
                 </div>
                 <div class="modal-body">
-                    <div class = "img-wrapper flex align-center justify-center">
+                    <div  :style="{background: bgnd}" class ="img-wrapper flex align-center justify-center">
                         <img :src="src"></img>
                     </div>    
                 </div>
@@ -23,7 +24,6 @@ export default {
                 </div>
             </div>
         </div>
-    </template>
     `,
     methods: {
         close() {
@@ -34,8 +34,9 @@ export default {
             this.close();
         },
         init(){
-            this.src = this.$route.params.url,
-            this.index =  this.$route.params.index
+            this.src = this.$route.params.url;
+            this.index =  this.$route.params.index;
+            this.bgnd =  this.$route.params.bgnd;
         }
     },
     mounted(){

@@ -23,9 +23,6 @@ export default {
             </div>
             `,
     data() {
-                // <button @click="addNote" class="btn btn-default"
-                //                     type="button">Add!
-                // </button>
         return {
             newNote: ''
         }

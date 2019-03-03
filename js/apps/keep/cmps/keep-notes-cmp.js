@@ -63,8 +63,8 @@ export default {
             </div>    
             </ul>
             <router-view v-if="$route.fullPath === '/missKeep-app/note'"></router-view>             
-            </section>
-            `,
+         </section>
+    `,
     methods: {
         onClick(note, index, ev) {
             console.log(ev.target.classList);
