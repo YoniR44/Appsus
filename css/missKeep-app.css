@@ -249,4 +249,8 @@
    height:auto;
    object-fit: contain;
 }
+
+.modal-mask textarea {
+  font-size: 1rem;
+}
  

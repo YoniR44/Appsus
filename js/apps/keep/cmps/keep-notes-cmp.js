@@ -103,9 +103,10 @@ export default {
         },
         addNewNote() {
             keepService.addNote(this.newText);
+            this.newText = '';
         },
     },
-    
+
     created() {
         console.log('keepNotes linked');
         eventBus.$on('editNote', dat => {
