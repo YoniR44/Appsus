@@ -31,7 +31,7 @@ export default {
                             </a>
                         </div>
                     </div>
-                    <button class="port-btn">See My Portfolio</button>       
+                    <button class="port-btn"><a href="https://yonir44.github.io/my-portfolio/">See My Portfolio</a></button>       
                 </div>
                 <div class="worker-card">
                 <transition name="fade">   

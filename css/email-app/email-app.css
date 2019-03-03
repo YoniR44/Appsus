@@ -106,7 +106,7 @@
 }
 
 .info-container {
-    height: 76vh;
+    height: 75vh;
     width: 80vw;
     background-color: whitesmoke;
     border-radius: 5px;
@@ -138,6 +138,25 @@
     background-color: rgb(24, 1, 1);
 }
 
+.mail-section-nav {
+    height: 50px;
+}
+
+.go-back-btn {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: darkseagreen;
+    border: unset;
+    box-shadow: 4px 4px 30px -6px rgba(0,0,0,0.75);
+    font-size: 25px;
+}
+
+.go-back-btn:hover {
+    background-color: darkcyan;
+}
+
 .compose-btn {
     width: 140px;
     height: 30px;
@@ -157,7 +176,8 @@
 .filter-select {
     width: 70px;
     height: 30px;
-    border: 1px solid black;
+    border: 1px solid #5bd1ee;
+    background-color: #f4f5f4;
     display: flex;
     justify-content: center;
     align-items: center;

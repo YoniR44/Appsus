@@ -1,6 +1,8 @@
 .email-form {
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .email-form-subject, .email-form-sender {   
@@ -26,11 +28,17 @@
     border-radius: 10px;
     background-color: darkseagreen;
     cursor: pointer;
+    box-shadow: 4px 4px 30px -6px rgba(0,0,0,0.75);
+    border: unset;
+}
+
+.email-form-submit:hover {
+    background-color: darkcyan;
 }
 
 .email-form-body {
     width: 100%;
-    height: 80%;
+    flex-grow: 1;
     border-radius: 3px;
     padding: 5px;
     border-radius: 10px;
