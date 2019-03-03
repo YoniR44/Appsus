@@ -2,46 +2,62 @@ var interval;
 
 export default {
     template: `
-        <section>
-            <h1>About Us</h1>
-            <div>  
+        <section class="about-body">
+            <div class="about-top">  
+                <h1>About Us</h1>
                 <p>This app was built using the VueJS framework.</p>
             </div>
-            <div>
-                <h3>About me</h3>
-                <div class="my-area">
+            <hr>
+            <div class="worker-cards">
+                <div class="worker-card">
                     <transition name="fade">   
                         <div class="alert alert-info" v-show="show"><img :src="myImg" alt="" class="myImg"></div>
                     </transition>
-                    <!-- <ul class="list-inline social-buttons">
-                        <li class="list-inline-item">
+                    <div class="worker-name">Yehonatan Ratzon</div>
+                    <div class="social-container">    
+                        <div class="social-link">
                             <a href="https://github.com/YoniR44">
-                                <i class="fab fa-git"></i>
+                                <i class="fab fa-github"></i>
                             </a>
-                        </li>
-                        <li class="list-inline-item">
+                        </div>
+                        <div class="social-link">
                             <a href="https://www.facebook.com/jonathan.ratzon.7">
-                                <i class="fa fa-facebook"></i>
+                                <i class="fab fa-facebook-f"></i>
                             </a>
-                        </li>
-                        <li class="list-inline-item">
+                        </div>
+                        <div class="social-link">
                             <a href="#">
-                                <i class="fa fa-linkedin"></i>
+                                <i class="fab fa-linkedin-in"></i>
                             </a>
-                        </li>
-                    </ul> -->
-                    <p>Yes, I'm the guy in the picture</p>
+                        </div>
+                    </div>
+                    <button class="port-btn">See My Portfolio</button>       
                 </div>
-            </div>    
-            <div>
-                <h3>About him</h3>
-                <div class="my-area">
-                    <transition name="fade">   
+                <div class="worker-card">
+                <transition name="fade">   
                         <div class="alert alert-info" v-show="show"><img :src="hisImg" alt="" class="myImg"></div>
                     </transition>
-                    <p>Yes, he is the guy</p>
-                </div>
-            </div>   
+                    <div class="worker-name">Daniel Yosilevich</div>
+                    <div class="social-container">    
+                        <div class="social-link">
+                            <a href="#">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                        <div class="social-link">
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                        <div class="social-link">
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <button class="port-btn">See My Portfolio</button> 
+                </div> 
+            </div>  
         </section>
     `,
     data() {
