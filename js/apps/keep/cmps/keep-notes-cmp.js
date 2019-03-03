@@ -6,7 +6,8 @@ import { eventBus } from '../../../event-bus.js';
 export default {
     props: {
         data: Array,
-        mail: Object
+        mail: Object,
+        todos: Array
     },
     components: {
         keepDisplayNote,
@@ -21,7 +22,8 @@ export default {
             currIndex: -1,
             newText: '',
             filterStr: '',
-            emailId: ''
+            emailId: '',
+            currMail: ''
         }
     },
     template: `
@@ -50,6 +52,7 @@ export default {
                      @mouseenter = "onMouseEnter(index,$event)"
                      class = "notes-layout-wrapper flex justify-center align-center">  
                 <keep-display-note
+                    :todos = "todos"
                     :isActive = "currActiveIndex"
                     :isOutside = "isOutside"
                     :currIndex = "currIndex"
@@ -67,7 +70,7 @@ export default {
     `,
     methods: {
         onClick(note, index, ev) {
-            console.log(ev.target.classList);
+            console.log(ev.target);
             if (ev.target.tagName !== 'BUTTON' && ev.target.tagName !== 'TD') {
                 this.$router.push({ name: 'noteRoute', params: { id: note.id, content: note.content, index: index } });
                 return;
