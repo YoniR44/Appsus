@@ -1,4 +1,3 @@
-import keepService from '../services/keep-service.js'
 import { eventBus } from '../../../event-bus.js';
 
 export default {
@@ -33,15 +32,10 @@ export default {
 `,
     methods: {
         close() {
-            console.log(' id:  ', this.$route.params);
-        //    keepService.updateNoteProperty(this.index,'content',this.content);
-        //   eventBus.$emit('statusChanged');
-        console.log('hhhhh',this.content);
-       
-           this.$router.push({ path: '/missKeep-app'});
+            this.$router.push({ path: '/missKeep-app' });
         },
         updateNote() {
-            eventBus.$emit('editNote', {index:this.index,content:this.content});
+            eventBus.$emit('editNote', { index: this.index, content: this.content });
             this.close();
         },
         init() {

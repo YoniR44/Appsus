@@ -10,8 +10,8 @@ export default {
     },
     template: `
             <div>
-               <div>
-                <input @keyup.enter="addNote" v-model="newNote"
+               <div class = "flex justify-center">
+                    <input @keyup.enter="addNote" v-model="newNote"
                         placeholder="add new note" type="text"
                         class="form-control" maxlength="50"  >
                 </div> 
