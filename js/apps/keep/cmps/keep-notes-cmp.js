@@ -41,9 +41,7 @@ export default {
                 <div class = "email-wrapper flex justify-center align-center" 
                      v-for="(currNote,index) in notes" :key = "currNote.id"
                           v-if = "currNote.id === currMail.id"> 
-                                <p class = "flex"> {{currNote.content}} </p>
-                         
-                    
+                                <p class = "flex"> Email Draft: {{currNote.content}} </p>                         
                 </div>    
             </div>
             <ul class = "flex align-center justify-center">

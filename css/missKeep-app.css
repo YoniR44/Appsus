@@ -122,6 +122,8 @@
    /* max-width: 20rem; */
    min-width: 10rem;
    padding: 0 0.3rem 0 0.3rem;
+   word-break: break-all;
+   white-space: normal;
 }
 .keep-notes .btn-checked {
    cursor: none;
