@@ -59,11 +59,22 @@
 .keep-notes-header {
    outline: 2px solid darkmagenta;
 }
-.keep-notes-header .for-email{
-   background-color:yellow;
-   width:30rem;
-   height:10rem;
+.keep-notes-header .email-wrapper{
+   background-color:lightgray;
+   color:darkmagenta;
+   font-size:2rem;
+   /* max-width:10rem; */
+   width:100%;
+   height:auto;
+   margin:0 1rem 0 1rem;
+   outline: 1px solid darkmagenta; 
+   display: inline-flex;
 }
+.keep-notes-header .email-wrapper p{
+  word-break: break-all;
+  white-space: normal;
+}
+
  .keep-notes-input-wrapper {
     flex-direction: column;
     margin: 0.3rem 1rem 0.3rem 1rem;
@@ -108,7 +119,7 @@
    cursor: pointer
 }
 .keep-notes p {
-   max-width: 20rem;
+   /* max-width: 20rem; */
    min-width: 10rem;
    padding: 0 0.3rem 0 0.3rem;
 }

@@ -27,7 +27,7 @@ export default {
     // <keep-todo v-if="selected"></keep-todo>
     template: `
         <section class = "keep-notes">     
-            <div class = "keep-notes-header flex ">
+            <div class = "keep-notes-header flex space-between align-center">
                 <div class = "keep-notes-input-wrapper flex"> 
                     <textarea v-model = "newText" placeholder="New Note"
                          rows="3" class="form-control">    
@@ -38,12 +38,13 @@ export default {
                     </div> 
                 </div>
                 <keep-todo></keep-todo>
-                <div class = "for-email" <div v-for="(currNote,index) in notes" :key = "currNote.id"  
-                >
-                   <div v-if = "currNote.id === currMail.id"> 
-                     <p> {{currNote.content}} </p>
-                  </div>
-                </div>
+                <div class = "email-wrapper flex justify-center align-center" 
+                     v-for="(currNote,index) in notes" :key = "currNote.id"
+                          v-if = "currNote.id === currMail.id"> 
+                                <p class = "flex"> {{currNote.content}} </p>
+                         
+                    
+                </div>    
             </div>
             <ul class = "flex align-center justify-center">
             <div v-for="(currNote,index) in notes" :key = "currNote.id"              

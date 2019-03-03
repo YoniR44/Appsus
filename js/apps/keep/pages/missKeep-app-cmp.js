@@ -6,7 +6,7 @@ import keepTodo from '../cmps/keep-todo-cmp.js'
 
 export default {
     template:
-        `<section class="missKeep-app-body">
+        `<section class="missKeep-app-body flex">
             <div class = "missKeep-wrapper">
             <header>
                 <hr>
