@@ -17,6 +17,13 @@
     background-color: rgb(212, 159, 159, 0.7);
 }
 
+@media (max-width: 500px) {
+    .single-email {
+        width: 94vw;
+        max-width: 94vw;
+    }
+}
+
 .read-email {
     background-color: rgba(245, 245, 245, 0.7);
 }
