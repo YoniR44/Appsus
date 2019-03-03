@@ -6,11 +6,13 @@ export default {
    initGlobals,
    filterNotes,
    removeNote,
-   addNote
+   addNote,
+   saveEmail
 }
 
 var gNotes;
 var gImgs;
+
 
 function initGlobals(notes,imgs){
    gNotes = notes;
@@ -61,4 +63,9 @@ function addNote(text){
    saveGlobals();
 }
 
+function saveEmail(note){
+    let noteEmail = { id:note.id,content:note.content};
+    console.log(noteEmail);
+    storageService.store('noteEmail',noteEmail);
+}
 

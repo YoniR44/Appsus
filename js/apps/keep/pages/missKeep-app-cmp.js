@@ -6,7 +6,7 @@ import keepTodo from '../cmps/keep-todo-cmp.js'
 
 export default {
     template:
-        `<section class="missKeep-app-body">
+        `<section class="missKeep-app-body flex">
             <div class = "missKeep-wrapper">
             <header>
                 <hr>
@@ -32,7 +32,7 @@ export default {
                     If nothing shows you have to run it with Live Server because fetch gets blocked 
                     when using browser link from GitHub. I will switch to localstorage later if needed.      
                 </div>
-                <component :is = "cmp.type" :data = "cmp.data" v-if="selected"></component>
+                <component :is = "cmp.type" :data = "cmp.data"  :mail = "cmp.mail" v-if="selected"></component>
             </main>
             </div>
         </section>
@@ -46,9 +46,11 @@ export default {
             selected: '',
             notes: [],
             imgUrls: [],
+            noteEmail: '',
             cmp: {
                 type: 'keepNotes',
-                data: this.notes
+                data: this.notes,
+                mail: this.noteEmail
             },
         }
     },
@@ -59,6 +61,7 @@ export default {
     },
     methods: {
         getData() {
+            this.noteEmail = storageService.load('noteEmail');
             let storageNotes = storageService.load('keepNotes');
             let storageImgs = storageService.load('keepImgs');
             console.log(storageNotes);
@@ -90,7 +93,7 @@ export default {
     watch: {
         selected() {
             switch (this.selected) {
-                case ('text'): this.cmp = { type: 'keepNotes', data: this.notes }; break;
+                case ('text'): this.cmp = { type: 'keepNotes', data: this.notes, mail: this.noteEmail }; break;
                 case ('image'): this.cmp = { type: 'keepImages', data: this.imgUrls }; break;
             }
         }
