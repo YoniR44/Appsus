@@ -9,23 +9,23 @@ export default {
         keepTodoDisplay
     },
     template: `
-             <div class="input-group">
+            <div>
+               <div>
                 <input @keyup.enter="addNote" v-model="newNote"
                         placeholder="add new note" type="text"
-                        class="form-control">
-                <span class="input-group-btn">
-                <button @click="addNote" class="btn btn-default"
-                                    type="button">Add!
-                </button>
-                </span>
+                        class="form-control" maxlength="50"  >
+                </div> 
                 <ul>
-                <keepTodoDisplay v-for="note in notesList" :key = "note.id"
-                     :note="note">
-                </keepTodoDisplay>
-            </ul>
-             </div>
-    `,
+                    <keepTodoDisplay v-for="note in notesList" :key = "note.id"
+                         :note="note">
+                    </keepTodoDisplay>
+                </ul>
+            </div>
+            `,
     data() {
+                // <button @click="addNote" class="btn btn-default"
+                //                     type="button">Add!
+                // </button>
         return {
             newNote: ''
         }

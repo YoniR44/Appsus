@@ -1,4 +1,12 @@
 
+.header-wrapper2 {
+   background-color:yellow;
+}
+.header-wrapper3 {
+   background-color: orange;
+   /* flex-direction: column; */
+}
+
 .missKeep-wrapper{
     background-color: lightsteelblue;
     max-width: 100rem;
@@ -46,9 +54,21 @@
  }
 
  /* keep-notes */
-
+ .keep-notes-input-wrapper {
+    flex-direction: column;
+    margin: 0.3rem 1rem 0.3rem 1rem;
+ }
+ .keep-notes .btn-input-save{
+    width: 4rem;
+ }
+ .keep-notes .input-search{
+    width: 10rem;
+ }
+ textarea {
+    max-width:20rem;
+ }
  .keep-notes ul {
-   margin: 0.3rem 0.3rem 0.3rem 0.3rem;
+   margin: 0.3rem 1rem 0.3rem 1rem;
    outline: 1px solid #0053ba;
    padding: 0;
    font-size: 1.5rem;
@@ -71,6 +91,10 @@
 
 .keep-notes .fa {
    cursor: pointer
+}
+.keep-notes p {
+   max-width: 20rem;
+   min-width: 10rem;
 }
 .keep-notes .btn-checked {
    cursor: none;
@@ -120,6 +144,19 @@
 }
 
  /* keep-Todo */
+.keep-todo-wrapper {
+   max-height: 10rem;
+   /* max-width: 30rem; */
+   height:10rem;
+   width:auto;
+   /* display:inline-block; */
+   overflow-y: scroll;
+   /* overflow-x: scroll; */
+   background-color:lime;
+   /* flex-grow: 1; */
+   flex-direction: column;
+}
+
  .keep-todo .removed {
    color: gray;
  }
@@ -128,9 +165,16 @@
    text-decoration: line-through;
  }
 
- .keep-todo ul li span {
+.keep-todo ul{
+   font-size: 1rem;
+}
+.keep-todo ul li span {
    margin-left: 0.3rem;
  }
+ .keep-todo li {
+    max-width:30rem;
+ }
+
  /* modal */
  .modal-mask {
    position: fixed;

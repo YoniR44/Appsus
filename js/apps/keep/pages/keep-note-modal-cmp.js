@@ -1,3 +1,6 @@
+import keepService from '../services/keep-service.js'
+import { eventBus } from '../../../event-bus.js';
+
 export default {
     data() {
         return {
@@ -10,22 +13,17 @@ export default {
        <div class="modal-container" @click.stop>
 
         <div class="modal-header">
-            <h3>{{index}}</h3>
+            <h3> Edit </h3>
         </div>
 
         <div class="modal-body">
             <label class="form-label">
-                Title
-                <input class="form-control">
-            </label>
-            <label class="form-label">
-                Body
-                <textarea rows="5" class="form-control">{{content}}</textarea>
+                <textarea v-model = "content" rows="5" class="form-control">{{content}}</textarea>
             </label>
         </div>
 
         <div class="modal-footer text-right">
-            <button class="modal-default-button" @click="savePost()">
+            <button class="modal-default-button" @click="updateNote()">
                 Save
             </button>
         </div>
@@ -36,9 +34,13 @@ export default {
     methods: {
         close() {
             console.log(' id:  ', this.$route.params);
-            this.$router.push({ path: '/missKeep-app' });
+        //    keepService.updateNoteProperty(this.index,'content',this.content);
+        //   eventBus.$emit('statusChanged');
+        console.log(this.content);
+        eventBus.$emit('editNote', {index:this.index,content:this.content});
+           this.$router.push({ path: '/missKeep-app'});
         },
-        savePost() {
+        updateNote() {
             this.close();
         },
         init() {
