@@ -18,14 +18,13 @@ export default {
             isOutside: true,
             currIndex: -1,
             newText: '',
-            filterStr: ''
+            filterStr: '',
         }
     },
     // <keep-todo v-if="selected"></keep-todo>
     template: `
-        <section class = "keep-notes">
-            <hr>      
-            <div class = "flex ">
+        <section class = "keep-notes">     
+            <div class = "keep-notes-header flex ">
                 <div class = "keep-notes-input-wrapper flex"> 
                     <textarea v-model = "newText" placeholder="New Note"
                          rows="3" class="form-control">    
@@ -37,7 +36,6 @@ export default {
                 </div>
                 <keep-todo></keep-todo>
             </div>
-            <hr>
             <ul class = "flex align-center justify-center">
             <div v-for="(currNote,index) in notes" :key = "currNote.id"              
                      @click = "onClick(currNote,index,$event)"
@@ -115,5 +113,5 @@ export default {
             keepService.updateNoteProperty();
             console.log('Detected event from keep-notes!');
         });
-    }
+    },
 }

@@ -4,6 +4,8 @@
 }
 .header-options-wrapper {
    margin-left: 1rem;
+   margin-top: -1.5rem;
+   margin-bottom: 1rem;
 }
 
 .missKeep-wrapper{
@@ -49,22 +51,30 @@
     color:snow;
  }
  .keep-images li {
-    margin: 0 0.5rem 0 0.5rem;
+    padding: 0 0.5rem 0 0.5rem;
     height: auto;
  }
 
  /* keep-notes */
+.keep-notes-header {
+   outline: 2px solid darkmagenta;
+}
  .keep-notes-input-wrapper {
     flex-direction: column;
     margin: 0.3rem 1rem 0.3rem 1rem;
  }
+ .keep-notes-input-wrapper > *{
+  outline: 1px solid darkmagenta;
+}
  .keep-notes .btn-input-save{
     width: 4rem;
+    outline: 1px ridge darkmagenta;
  }
  .keep-notes .input-search{
     width: 10rem;
+    outline: 1px ridge darkmagenta;
  }
- textarea {
+ .keep-notes textarea {
     max-width:20rem;
  }
  .keep-notes ul {
@@ -154,7 +164,8 @@
    overflow-y: scroll;
    /* overflow-x: scroll; */
    background-color:lightgray;
-   /* flex-grow: 1; */
+   margin:0.3rem 0 0.3rem 0;
+   outline: 1px solid darkmagenta;
    flex-direction: column;
 }
 
