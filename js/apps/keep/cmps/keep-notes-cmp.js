@@ -1,23 +1,41 @@
 import keepService from '../services/keep-service.js'
 import keepDisplayNote from './keep-display-note-cmp.js'
+import keepTodo from '../cmps/keep-todo-cmp.js'
+import { eventBus } from '../../../event-bus.js';
 
 export default {
     props: {
-        data: Array
+        data: Array,
     },
     components: {
-        keepDisplayNote
+        keepDisplayNote,
+        keepTodo
     },
     data() {
         return {
             notes: this.data,
             currActiveIndex: -1,
             isOutside: true,
-            currIndex: -1
+            currIndex: -1,
+            newText: '',
+            filterStr: '',
         }
     },
+    // <keep-todo v-if="selected"></keep-todo>
     template: `
-        <section class = "keep-notes">
+        <section class = "keep-notes">     
+            <div class = "keep-notes-header flex ">
+                <div class = "keep-notes-input-wrapper flex"> 
+                    <textarea v-model = "newText" placeholder="New Note"
+                         rows="3" class="form-control">    
+                    </textarea>
+                    <div>
+                        <button class = "btn-input-save" @click = "addNewNote"> Save </button>
+                         <input v-model = "filterStr" class = "input-search" type="text" placeholder="Search">
+                    </div> 
+                </div>
+                <keep-todo></keep-todo>
+            </div>
             <ul class = "flex align-center justify-center">
             <div v-for="(currNote,index) in notes" :key = "currNote.id"              
                      @click = "onClick(currNote,index,$event)"
@@ -31,7 +49,9 @@ export default {
                     :pinned = "currNote.pinned"
                     :content = "currNote.content" 
                     :index = "index"
-                    :background = "currNote.bgnd">
+                    :background = "currNote.bgnd"
+                    :filterStr = "filterStr"
+                >    
                 </keep-display-note>
             </div>    
             </ul>
@@ -51,19 +71,22 @@ export default {
             }
             if (ev.target.classList.contains('btn-tack')) {
                 this.notes[index].pinned = !this.notes[index].pinned;
-                keepService.updateNoteProperty(index,'pinned',this.notes[index].pinned);
+                //  keepService.updateNoteProperty(index,'pinned',this.notes[index].pinned);
+                // keepService.updateNoteProperty();
+                keepService.filterNotes();
                 return;
             }
             if (ev.target.classList.contains('btn-remove')) {
                 // this.notes[index].pinned = !this.notes[index].pinned;
                 // keepService.updateNoteProperty(index,'pinned',this.notes[index].pinned);
-                   keepService.removeNote(index);
+                keepService.removeNote(index);
                 return;
-            } 
+            }
             if (ev.target.tagName === 'TD') {
                 this.notes[index].bgnd = ev.target.style.backgroundColor;
                 this.currActiveIndex = -1;
-                keepService.updateNoteProperty(index,'bgnd',this.notes[index].pinned);
+                //    keepService.updateNoteProperty(index,'bgnd', ev.target.style.backgroundColor);
+                keepService.updateNoteProperty();
                 return;
             }
         },
@@ -75,9 +98,20 @@ export default {
         onMouseEnter(index) {
             this.isOutside = false;
             this.currIndex = index;
-        }
+        },
+        addNewNote() {
+            keepService.addNote(this.newText);
+            this.newText = '';
+        },
     },
+
     created() {
         console.log('keepNotes linked');
-    }
+        eventBus.$on('editNote', dat => {
+            let content = dat.content;
+            this.notes[dat.index].content = content;
+            keepService.updateNoteProperty();
+            console.log('Detected event from keep-notes!');
+        });
+    },
 }

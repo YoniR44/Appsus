@@ -1,3 +1,12 @@
+/* Base */
+.missKeep-app-body hr {
+  color:darkmagenta;
+}
+.header-options-wrapper {
+   margin-left: 1rem;
+   margin-top: -1.5rem;
+   margin-bottom: 1rem;
+}
 
 .missKeep-wrapper{
     background-color: lightsteelblue;
@@ -7,6 +16,7 @@
 .missKeep-wrapper h1{
    padding: 0;
    margin: 0;
+   color: darkmagenta
 }
 
 .missKeep-wrapper ul{
@@ -41,15 +51,35 @@
     color:snow;
  }
  .keep-images li {
-    margin: 0 0.5rem 0 0.5rem;
+    padding: 0 0.5rem 0 0.5rem;
     height: auto;
  }
 
  /* keep-notes */
-
+.keep-notes-header {
+   outline: 2px solid darkmagenta;
+}
+ .keep-notes-input-wrapper {
+    flex-direction: column;
+    margin: 0.3rem 1rem 0.3rem 1rem;
+ }
+ .keep-notes-input-wrapper > *{
+  outline: 1px solid darkmagenta;
+}
+ .keep-notes .btn-input-save{
+    width: 4rem;
+    outline: 1px ridge darkmagenta;
+ }
+ .keep-notes .input-search{
+    width: 10rem;
+    outline: 1px ridge darkmagenta;
+ }
+ .keep-notes textarea {
+    max-width:20rem;
+ }
  .keep-notes ul {
-   margin: 0.3rem 0.3rem 0.3rem 0.3rem;
-   outline: 1px solid #0053ba;
+   margin: 0.3rem 1rem 0.3rem 1rem;
+   outline: 1px solid darkmagenta;
    padding: 0;
    font-size: 1.5rem;
    font-weight: bold;
@@ -71,6 +101,11 @@
 
 .keep-notes .fa {
    cursor: pointer
+}
+.keep-notes p {
+   max-width: 20rem;
+   min-width: 10rem;
+   padding: 0 0.3rem 0 0.3rem;
 }
 .keep-notes .btn-checked {
    cursor: none;
@@ -120,6 +155,20 @@
 }
 
  /* keep-Todo */
+.keep-todo-wrapper {
+   max-height: 10rem;
+   /* max-width: 30rem; */
+   height:10rem;
+   width:auto;
+   /* display:inline-block; */
+   overflow-y: scroll;
+   /* overflow-x: scroll; */
+   background-color:lightgray;
+   margin:0.3rem 0 0.3rem 0;
+   outline: 1px solid darkmagenta;
+   flex-direction: column;
+}
+
  .keep-todo .removed {
    color: gray;
  }
@@ -128,9 +177,16 @@
    text-decoration: line-through;
  }
 
- .keep-todo ul li span {
+.keep-todo ul{
+   font-size: 1rem;
+}
+.keep-todo ul li span {
    margin-left: 0.3rem;
  }
+ .keep-todo li {
+    max-width:30rem;
+ }
+
  /* modal */
  .modal-mask {
    position: fixed;
@@ -203,5 +259,9 @@
    width:15rem;
    height:auto;
    object-fit: contain;
+}
+
+.modal-mask textarea {
+  font-size: 1rem;
 }
  

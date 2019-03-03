@@ -6,13 +6,11 @@ export default {
     },
     template: `
             <section class = "keep-todo">
-                <h2> Todo List </h2>
-                   <keep-todo-add :notesList="notesList"></keep-todo-add>
-                   <div class="footer">
-                   <hr/>
-                   </div>
-                   </section>    
-                   `,
+                <div class = "keep-todo-wrapper flex justfy-center align-center ">
+                    <keep-todo-add :notesList="notesList"></keep-todo-add>
+                </div> 
+            </section>    
+    `,
     data() {
         return {
             notesList: [{ id: "9laHCEdSpFy", text: "Note1", checked: true },

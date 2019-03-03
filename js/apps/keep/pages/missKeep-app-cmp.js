@@ -1,5 +1,5 @@
 import storageService from '../../../services/storage-service.js';
-import keepStorage from '../services/keep-service.js'
+import keepService from '../services/keep-service.js'
 import keepNotes from '../cmps/keep-notes-cmp.js'
 import keepImages from '../cmps/keep-images-cmp.js'
 import keepTodo from '../cmps/keep-todo-cmp.js'
@@ -9,33 +9,24 @@ export default {
         `<section class="missKeep-app-body">
             <div class = "missKeep-wrapper">
             <header>
-                <div> 
-                    <button @click="saveNotesLocally">Save Notes</button>
-                    <button @click="saveImgUrlsLocally">Save Image Urls</button>
-                </div>
-                <h1>missKeep</h1>  
-                <input type="text" placeholder="Search">
-                <select v-model = "selected">
-                    <option value="text">Text</option>
-                    <option value="image">Image</option>
-                    <option value="video">Video</option>
-                </select> 
-                <span>Selected: {{ selected }}</span>
-                <input v-model = "newText" type="text" placeholder="" @keyup.enter= "hmm">
-                <span>Selected: {{ newText }}</span>
-                <label class="form-label">
-                      Body
-                      <div> 
-                     <textarea v-model = "newText" placeholder="New Note"
-                            rows="5" class="form-control">
-                          
-                     </textarea>
-                     <button @click = "addNewNote"> Save </button>
-                     </div>
-                </label>
                 <hr>
+                <div class = "hero flex align-center justify-center">
+                    <h1>missKeep</h1> 
+                </div>
+                <div class = "header-wrapper ">         
+                    <div class = "header-options-wrapper flex align-centern" > 
+                        <div>                 
+                            <select v-model = "selected">
+                                <option value="text">Text</option>
+                                <option value="image">Image</option>
+                                <option value="video">Video</option>
+                            </select>
+                        </div>            
+                    </div>                  
+                </div>
+            
             </header>
-            <keep-todo v-if="selected"></keep-todo>
+        
             <main class = "flex justify-center align-center">
                 <div class = "missKeep-pending" v-if="showPendingStatus"> Hold on! Loading some things...
                     If nothing shows you have to run it with Live Server because fetch gets blocked 
@@ -46,10 +37,13 @@ export default {
             </div>
         </section>
     `,
+//     <div> 
+//     <button @click="saveNotesLocally">Save Notes</button>
+//     <button @click="saveImgUrlsLocally">Save Image Urls</button>
+//    </div>
     data() {
         return {
             selected: '',
-            newText: '',
             notes: [],
             imgUrls: [],
             cmp: {
@@ -79,7 +73,7 @@ export default {
             }
             setTimeout(() => {
                 this.selected = 'text'; console.log('after timeout...', this.notes);
-                keepStorage.initGlobals(this.notes, this.imgUrls);
+                keepService.initGlobals(this.notes, this.imgUrls);
             }, 3000);
         },
 
@@ -89,9 +83,6 @@ export default {
         saveImgUrlsLocally() {
             storageService.saveToFile(JSON.stringify(this.imgUrls), 'imgUrls.json');
         },
-        addNewNote(){
-            keepStorage.addNote(this.newText);
-        }
     },
     computed: {
         showPendingStatus() { return (!this.selected) ? true : false; }

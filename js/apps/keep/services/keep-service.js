@@ -23,14 +23,24 @@ function saveGlobals(){
     storageService.store('keepImgs',gImgs);
 }
 
-function updateNoteProperty(index,property,value) {
-  gNotes[index].property = value;
-  if (property === 'pinned') filterNotes();
+//function updateNoteProperty(index,property,value) {
+    function updateNoteProperty() {
+    // switch(property){
+    //   case 'pinned': gNotes[index].pinned = value; filterNotes(); break;
+    //   case 'bgnd': gNotes[index].bgnd = value; break;
+    //   case 'content': gNotes[index].content = value; break;
+    //   default: console.log('Something bad with updateProperty!');
+    // }
+//     let h = gNotes[index];
+//   Vue.set(h,'content', value);
+//   console.log(h);
+//   if (property === 'pinned') filterNotes();
   saveGlobals(); 
 }
 
 function filterNotes(){
     gNotes.sort((note1,note2) =>  note2.pinned - note1.pinned );
+    saveGlobals();
 }
 
 function removeNote(index){

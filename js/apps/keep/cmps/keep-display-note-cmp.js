@@ -6,7 +6,8 @@ export default {
         background: String,
         isOutside: Boolean,
         currIndex: Number,
-        pinned: Boolean
+        pinned: Boolean,
+        filterStr: String
     },
     data() {
         return {
@@ -23,7 +24,7 @@ export default {
         }
     },
     template: `
-           <li class = "li-wrapper" :style="{background: background}" >
+           <li v-if = "filterBy" class = "li-wrapper" :style="{background: background}" >
            <div>
                <button v-show = "pinned" class = "btn-checked fa fa-check"></button>
                <div> 
@@ -62,6 +63,10 @@ export default {
         toShowDiv(){
              return !this.isOutside && this.currIndex === this.index;
         },
+        filterBy(){
+            console.log(this.filterStr,'filter');
+            return this.content.includes(this.filterStr.trim()) || !this.filterStr;
+        }
     },
     created() {
     }
