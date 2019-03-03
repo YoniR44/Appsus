@@ -9,21 +9,19 @@ export default {
         `<section class="missKeep-app-body">
             <div class = "missKeep-wrapper">
             <header>
+                <hr>
                 <div class = "hero flex align-center justify-center">
                     <h1>missKeep</h1> 
                 </div>
-                <div class = "header-wrapper ">
-             
-                    <div class = "header-wrapper3 flex space-between" > 
-                        <div>
-                           
+                <div class = "header-wrapper ">         
+                    <div class = "header-options-wrapper flex align-centern" > 
+                        <div>                 
                             <select v-model = "selected">
                                 <option value="text">Text</option>
                                 <option value="image">Image</option>
                                 <option value="video">Video</option>
                             </select>
-                        </div>
-                   
+                        </div>            
                     </div>                  
                 </div>
             

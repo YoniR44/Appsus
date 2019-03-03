@@ -1,10 +1,9 @@
-
-.header-wrapper2 {
-   background-color:yellow;
+/* Base */
+.missKeep-app-body hr {
+  color:darkmagenta;
 }
-.header-wrapper3 {
-   background-color: orange;
-   /* flex-direction: column; */
+.header-options-wrapper {
+   margin-left: 1rem;
 }
 
 .missKeep-wrapper{
@@ -15,6 +14,7 @@
 .missKeep-wrapper h1{
    padding: 0;
    margin: 0;
+   color: darkmagenta
 }
 
 .missKeep-wrapper ul{
@@ -69,7 +69,7 @@
  }
  .keep-notes ul {
    margin: 0.3rem 1rem 0.3rem 1rem;
-   outline: 1px solid #0053ba;
+   outline: 1px solid darkmagenta;
    padding: 0;
    font-size: 1.5rem;
    font-weight: bold;
@@ -95,6 +95,7 @@
 .keep-notes p {
    max-width: 20rem;
    min-width: 10rem;
+   padding: 0 0.3rem 0 0.3rem;
 }
 .keep-notes .btn-checked {
    cursor: none;
@@ -152,7 +153,7 @@
    /* display:inline-block; */
    overflow-y: scroll;
    /* overflow-x: scroll; */
-   background-color:lime;
+   background-color:lightgray;
    /* flex-grow: 1; */
    flex-direction: column;
 }

@@ -12,6 +12,9 @@ li {
     list-style-type: none;
 }
 
+button {
+    cursor: pointer;
+}
 /* MAIN APP NAVBAR */
 
 .main-navbar {

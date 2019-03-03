@@ -36,11 +36,12 @@ export default {
             console.log(' id:  ', this.$route.params);
         //    keepService.updateNoteProperty(this.index,'content',this.content);
         //   eventBus.$emit('statusChanged');
-        console.log(this.content);
-        eventBus.$emit('editNote', {index:this.index,content:this.content});
+        console.log('hhhhh',this.content);
+       
            this.$router.push({ path: '/missKeep-app'});
         },
         updateNote() {
+            eventBus.$emit('editNote', {index:this.index,content:this.content});
             this.close();
         },
         init() {

@@ -17,7 +17,8 @@ export default {
             currActiveIndex: -1,
             isOutside: true,
             currIndex: -1,
-            newText: ''
+            newText: '',
+            filterStr: ''
         }
     },
     // <keep-todo v-if="selected"></keep-todo>
@@ -31,7 +32,7 @@ export default {
                     </textarea>
                     <div>
                         <button class = "btn-input-save" @click = "addNewNote"> Save </button>
-                         <input class = "input-search" type="text" placeholder="Search">
+                         <input v-model = "filterStr" class = "input-search" type="text" placeholder="Search">
                     </div> 
                 </div>
                 <keep-todo></keep-todo>
@@ -50,7 +51,9 @@ export default {
                     :pinned = "currNote.pinned"
                     :content = "currNote.content" 
                     :index = "index"
-                    :background = "currNote.bgnd">
+                    :background = "currNote.bgnd"
+                    :filterStr = "filterStr"
+                >    
                 </keep-display-note>
             </div>    
             </ul>
@@ -102,12 +105,14 @@ export default {
             keepService.addNote(this.newText);
         },
     },
+    
     created() {
         console.log('keepNotes linked');
         eventBus.$on('editNote', dat => {
             let content = dat.content;
             this.notes[dat.index].content = content;
             keepService.updateNoteProperty();
+            console.log('Detected event from keep-notes!');
         });
     }
 }
