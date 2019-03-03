@@ -7,7 +7,7 @@ export default {
             <form class="email-form">
                 <div class="flex space-between align-center">
                     <label>To: </label>
-                    <input class="email-form-sender" type="text" v-model="sender" placeholder="abc123@howdy.com" required>
+                    <input class="email-form-sender" type="email" v-model="sender" placeholder="abc123@howdy.com" required>
                     <button class="email-form-submit" type="submit" @click="saveEmail"><i class="far fa-paper-plane"></i> Send</button>
                 </div>
                 <hr>

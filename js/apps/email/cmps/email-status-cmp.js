@@ -2,7 +2,7 @@ import emailService from '../services/email-service.js';
 import { eventBus } from '../../../event-bus.js';
 
 export default {
-    props: ['emails'],
+    props: ['emails','section'],
     template: `
         <div class="percent-bar" >         
             <div class="progress-bar" 
@@ -32,7 +32,7 @@ export default {
                 if (this.emails[i].isRead) countRead++;
                 countTotal++;
             }
-            this.readPercent = Math.floor((countRead / countTotal) * 100);
+            if(this.section === 'inbox') this.readPercent = Math.floor((countRead / countTotal) * 100);
         })
     }
 }

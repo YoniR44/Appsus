@@ -2,6 +2,7 @@ import emailService from '../services/email-service.js';
 import emailList from '../cmps/email-list-cmp.js';
 import emailFilter from '../cmps/email-filter-cmp.js';
 import emailStatus from '../cmps/email-status-cmp.js';
+import { eventBus } from '../../../event-bus.js';
 
 export default {
     template: `
@@ -17,12 +18,18 @@ export default {
                             <div>Compose</div> 
                         </button>
                     </router-link>
-                    <div class="email-navbar-item" @click="changeEmailSection('inbox'), containersToggler = false, showNav=!showNav">
-                        Inbox
+                    <div class="email-navbar-item" style="justify-content: space-between" 
+                    @click="changeEmailSection('inbox'), containersToggler = false, showNav=!showNav, filterType = 'all'">
+                        <div>Inbox</div>
+                        <div><b>{{unreadCount}}</b></div>
                     </div>
-                    <div class="email-navbar-item" @click="changeEmailSection('sent'), containersToggler = false, showNav=!showNav">Sent</div>
-                    <div class="email-navbar-item" @click="changeEmailSection('deleted'), containersToggler = false, showNav=!showNav">Deleted</div>
-                    <email-status :emails="emailsToShow"></email-status>
+                    <div class="email-navbar-item" @click="changeEmailSection('sent'), containersToggler = false, showNav=!showNav, filterType = 'all'">
+                        Sent
+                    </div>
+                    <div class="email-navbar-item" @click="changeEmailSection('deleted'), containersToggler = false, showNav=!showNav, filterType = 'all'">
+                        Deleted
+                    </div>
+                    <email-status :emails="emailsToShow" :section = "emailType"></email-status>
                 </div>
                 <div class="email-list-wrapper" :class="{hideEmailList: containersToggler}">
                     <div class="email-list-nav">    
@@ -61,6 +68,7 @@ export default {
             notEmpty: false,
             showNav: false,
             containersToggler: false,
+            unreadCount: 0,
         }
     },
     methods: {
@@ -72,9 +80,9 @@ export default {
             var val = this.sortType;
 
             if (val === 'sortByNewest') {
-                this.emails.sort((email1, email2) => (email1.sentAt < email2.sentAt) ? 1 : -1);
+                this.emails.sort((email1, email2) => (email1.timeStamp < email2.timeStamp) ? 1 : -1);
             } else if (val === 'sortByOldest') {
-                this.emails.sort((email1, email2) => (email1.sentAt > email2.sentAt) ? 1 : -1);
+                this.emails.sort((email1, email2) => (email1.timeStamp > email2.timeStamp) ? 1 : -1);
             } else if (val === 'sortBySubject') {
                 this.emails.sort((email1, email2) => (email1.subject.toUpperCase() > email2.subject.toUpperCase()) ? 1 : -1);
             }
@@ -90,6 +98,16 @@ export default {
             this.emailType = section;
             emailService.queryEmails(this.emailType)
                 .then(emails => this.emails = emails)
+        },
+        countUnreadEmails() {
+            if (this.emailType !== 'inbox') return;
+            var count = 0;
+            for (let i = 0; i < this.emails.length; i++) {
+                if (emails[i].isRead === false) {
+                    count++;
+                }
+            }
+            this.unreadCount = count;
         }
     },
     computed: {
@@ -101,12 +119,25 @@ export default {
             return this.filteredEmails.filter(email => email.subject.toLowerCase().includes(this.filterBy.term.toLowerCase()) ||
                 email.body.toLowerCase().includes(this.filterBy.term.toLowerCase()));
         },
-        
+
     },
     created() {
         this.emailType = 'inbox'
         emailService.queryEmails(this.emailType)
-            .then(emails => this.emails = emails)
+            .then(emails => {
+                this.emails = emails;
+
+            eventBus.$on('statusChanged', () => {
+                if (this.emailType !== 'inbox') return;
+                var count = 0;
+                for (let i = 0; i < this.emails.length; i++) {
+                    if (emails[i].isRead === false) {
+                        count++;
+                    }
+                }
+                this.unreadCount = count;
+            });
+        })
     },
     components: {
         emailService,
