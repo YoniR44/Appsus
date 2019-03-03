@@ -52,8 +52,13 @@
     flex-direction: column;
     margin: 0.3rem 1rem 0.3rem 1rem;
  }
+
  .keep-imgs-input-wrapper > *{
   outline: 1px solid darkmagenta;
+}
+
+.keep-imgs-input-wrapper input {
+   width: 13rem;
 }
  .keep-imgs .btn-input-save{
     width: 4rem;
@@ -234,6 +239,7 @@
    position: absolute;
    left: 2rem;
    bottom: 0; 
+   display: none;
 }
 .keep-notes .btn-remove {
    position: absolute;
@@ -291,7 +297,7 @@
 
 .keep-todo ul{
    font-size: 1rem;
-   width:auto;
+   width:20rem;
    margin: 0;
 }
 .keep-todo ul li span {
@@ -381,13 +387,13 @@
   font-size: 1rem;
 }
 
-@media (max-width: 640px){ 
+@media (max-width: 780px){ 
    .keep-notes-header .email-wrapper  {
      display: none;
    }
 }
 
-@media (max-width: 420px){ 
+@media (max-width: 580px){ 
    .keep-todo   {
      display: none;
    }

@@ -28,7 +28,8 @@ export default {
         }
     },
     methods: {
-        addNote() {  
+        addNote() {
+            console.log('hhhh')  
             let text = this.newNote.trim();
             if (text) {
                 this.notesList.push({ text: text, checked: false,
@@ -37,5 +38,8 @@ export default {
             }
             console.log('noteslist',this.notesList);
         }
+    },
+    create(){
+        console.log(this.notesList);
     }
 }

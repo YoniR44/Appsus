@@ -11,22 +11,29 @@ export default {
     saveEmail,
     addImg,
     removeImg,
-    filterImgs
+    filterImgs,
+    addTodo,
+    removeTodo
 }
 
 var gNotes;
 var gImgs;
+var gTodos;
 
 
-function initGlobals(notes, imgs) {
+
+
+function initGlobals(notes, imgs,todos) {
     gNotes = notes;
     gImgs = imgs;
+    gTodos = todos;
     saveGlobals();
 }
 
 function saveGlobals() {
     storageService.store('keepNotes', gNotes);
     storageService.store('keepImgs', gImgs);
+    storageService.store('keepTodos', gTodos);
 }
 
 function updateNoteProperty() {
@@ -57,6 +64,10 @@ function removeImg(index) {
     saveGlobals();
 }
 
+function removeTodo(index) {
+    gTodos.splice(index, 1);
+    saveGlobals();
+}
 
 function addNote(text) {
     function createNote() {
@@ -80,6 +91,18 @@ function addImg(url) {
         };
     }
     gImgs.push(createImg());
+    saveGlobals();
+}
+
+function addTodo(text) {
+    function createTodo() {
+        return {
+            id: utilService.makeId(11),
+            text: text,
+            checked: false
+        };
+    }
+    gTodos.push(createTodo());
     saveGlobals();
 }
 
