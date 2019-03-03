@@ -9,6 +9,10 @@ export default {
         `<section class="missKeep-app-body flex">
             <div class = "missKeep-wrapper">
             <header>
+                <div> 
+                     <button @click="saveNotesLocally">Save Notes</button>
+                     <button @click="saveImgUrlsLocally">Save Image Urls</button>
+                </div>
                 <hr>
                 <div class = "hero flex align-center justify-center">
                     <h1>missKeep</h1> 

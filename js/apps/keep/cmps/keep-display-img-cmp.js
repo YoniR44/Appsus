@@ -1,6 +1,6 @@
 export default {
     props: {
-        content: String,
+        url: String,
         isActive: Number,
         index: Number,
         background: String,
@@ -22,16 +22,17 @@ export default {
             { hex: 'orange' }
             ],
         }
+      
     },
     template: `
-           <li v-if = "filterBy" class = "li-wrapper" :style="{background: background}" >
+           <li  class = "li-wrapper" :style="{background: background}" >
            <div>
                <button v-show = "pinned" class = "btn-checked fa fa-check"></button>
-               <div> 
-                     <p> {{content}} </p>
-               </div>
+             
+               <p class = "flex justify-center align-center wrap"> 
+               <span><img :src = "url"></span></img> 
+               </p>
                <div v-if = "toShowDiv">
-               <button class = "btn-email fa fa-envelope"></button> 
                <button class = "btn-tack fa fa-thumbtack"></button> 
                <button class = "btn-remove fa fa-times"></button> 
                <button  v-show = "toShowBtn" class = "btn-palette fa fa-palette">
@@ -63,10 +64,6 @@ export default {
         },
         toShowDiv(){
              return !this.isOutside && this.currIndex === this.index;
-        },
-        filterBy(){
-          //  console.log(this.filterStr,'filter');
-            return this.content.includes(this.filterStr.trim()) || !this.filterStr;
         }
     },
     created() {

@@ -24,7 +24,6 @@ export default {
             emailId: ''
         }
     },
-    // <keep-todo v-if="selected"></keep-todo>
     template: `
         <section class = "keep-notes">     
             <div class = "keep-notes-header flex space-between align-center">
@@ -64,8 +63,8 @@ export default {
             </div>    
             </ul>
             <router-view v-if="$route.fullPath === '/missKeep-app/note'"></router-view>             
-            </section>
-            `,
+         </section>
+    `,
     methods: {
         onClick(note, index, ev) {
             console.log(ev.target.classList);
@@ -79,30 +78,23 @@ export default {
             }
             if (ev.target.classList.contains('btn-tack')) {
                 this.notes[index].pinned = !this.notes[index].pinned;
-                //  keepService.updateNoteProperty(index,'pinned',this.notes[index].pinned);
-                // keepService.updateNoteProperty();
                 keepService.filterNotes();
                 return;
             }
             if (ev.target.classList.contains('btn-remove')) {
-                // this.notes[index].pinned = !this.notes[index].pinned;
-                // keepService.updateNoteProperty(index,'pinned',this.notes[index].pinned);
                 keepService.removeNote(index);
                 return;
             }
             if (ev.target.classList.contains('btn-email')) {
-                // this.notes[index].pinned = !this.notes[index].pinned;
-                // keepService.updateNoteProperty(index,'pinned',this.notes[index].pinned);
-               this.currMail.id = this.notes[index].id;
-               this.currMail.content = this.notes[index].content;
-               keepService.saveEmail(this.notes[index]);
-               console.log('email');
+                this.currMail.id = this.notes[index].id;
+                this.currMail.content = this.notes[index].content;
+                keepService.saveEmail(this.notes[index]);
+                console.log('email');
                 return;
             }
             if (ev.target.tagName === 'TD') {
                 this.notes[index].bgnd = ev.target.style.backgroundColor;
                 this.currActiveIndex = -1;
-                //    keepService.updateNoteProperty(index,'bgnd', ev.target.style.backgroundColor);
                 keepService.updateNoteProperty();
                 return;
             }
@@ -117,24 +109,18 @@ export default {
             this.currIndex = index;
         },
         addNewNote() {
-            keepService.addNote(this.newText);
+            if(this.newText.trim() !== '') keepService.addNote(this.newText);
             this.newText = '';
         },
     },
-
-    // computed:{
-    //     chosenForEmail(){
-    //         return this.index === 1;
-    //     }
-    // },
-
     created() {
         console.log('keepNotes linked');
         eventBus.$on('editNote', dat => {
             let content = dat.content;
-            this.notes[dat.index].content = content;
-            keepService.updateNoteProperty();
-            console.log('Detected event from keep-notes!');
+            if (content.trim() !== '') {
+                this.notes[dat.index].content = content;
+                keepService.updateNoteProperty();
+            }
         });
     },
 }

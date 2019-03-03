@@ -2,47 +2,45 @@ export default {
     data(){
         return {
             src:'',
-            index: ''
+            index: '',
+            bgnd: ''
         }
     },
     template: `
         <div class="modal-mask" @click="close" transition="modal">
             <div class="modal-container" @click.stop>
                 <div class="modal-header">
-                    <h3>Image No: {{index}}</h3>
+                    <h3>Pretty Picture</h3>
                 </div>
                 <div class="modal-body">
-                    <label class="form-label">
-                        Title
-                        <input class="form-control">
-                    </label>
-                    <div class = "img-wrapper flex align-center justify-center">
+                    <div  :style="{background: bgnd}" class ="img-wrapper flex align-center justify-center">
                         <img :src="src"></img>
                     </div>    
                 </div>
                 <div class="modal-footer text-right">
-                    <button class="modal-default-button" @click="savePost()">
-                    Save
+                    <button class="modal-default-button" @click="leave">
+                    Leave
                     </button>
                 </div>
             </div>
         </div>
-    </template>
     `,
     methods: {
         close() {
-            console.log( ' id:  ',this.$route.params);
+           // console.log( ' id:  ',this.$route.params);
             this.$router.push({ path: '/missKeep-app' });
         },
-        savePost() {
+        leave() {
             this.close();
         },
         init(){
-            this.src = this.$route.params.src,
-            this.index =  this.$route.params.index
+            this.src = this.$route.params.url;
+            this.index =  this.$route.params.index;
+            this.bgnd =  this.$route.params.bgnd;
         }
     },
     mounted(){
        this.init();
+      // console.log( this.$route.params);
     }
 }
