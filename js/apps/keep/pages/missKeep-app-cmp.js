@@ -23,7 +23,6 @@ export default {
                             <select v-model = "selected">
                                 <option value="text">Text</option>
                                 <option value="image">Image</option>
-                                <option value="video">Video</option>
                             </select>
                         </div>            
                     </div>                  
