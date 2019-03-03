@@ -66,7 +66,7 @@ export default {
         },
         filterBy(){
           //  console.log(this.filterStr,'filter');
-            return this.content.includes(this.filterStr.trim()) || !this.filterStr;
+            return this.content.toLowerCase().includes(this.filterStr.toLowerCase().trim()) || !this.filterStr;
         }
     },
     created() {

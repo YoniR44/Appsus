@@ -239,7 +239,6 @@
    position: absolute;
    left: 2rem;
    bottom: 0; 
-   display: none;
 }
 .keep-notes .btn-remove {
    position: absolute;

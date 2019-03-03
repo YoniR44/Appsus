@@ -7,7 +7,6 @@ export default {
     props: {
         data: Array,
         mail: Object,
-        todos: Array
     },
     components: {
         keepDisplayNote,
@@ -22,8 +21,7 @@ export default {
             currIndex: -1,
             newText: '',
             filterStr: '',
-            emailId: '',
-            currMail: ''
+            emailId: ''
         }
     },
     template: `
@@ -52,7 +50,6 @@ export default {
                      @mouseenter = "onMouseEnter(index,$event)"
                      class = "notes-layout-wrapper flex justify-center align-center">  
                 <keep-display-note
-                    :todos = "todos"
                     :isActive = "currActiveIndex"
                     :isOutside = "isOutside"
                     :currIndex = "currIndex"
@@ -118,6 +115,7 @@ export default {
     },
     created() {
         console.log('keepNotes linked');
+        console.log(this.mail);
         eventBus.$on('editNote', dat => {
             let content = dat.content;
             if (content.trim() !== '') {

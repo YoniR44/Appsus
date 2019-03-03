@@ -12,7 +12,6 @@ export default {
                 <div> 
                      <button @click="saveNotesLocally">Save Notes</button>
                      <button @click="saveImgUrlsLocally">Save Image Urls</button>
-                     <button @click="saveTodosLocally">Save Todos</button>
                 </div>
                 <hr>
                 <div class = "hero flex align-center justify-center">
@@ -48,12 +47,11 @@ export default {
             selected: '',
             notes: [],
             imgUrls: [],
-            todos: [],
-            noteEmail: '',
+            noteEmail: {},
             cmp: {
                 type: 'keepNotes',
                 data: this.notes,
-                 mail: this.noteEmail
+                mail: this.noteEmail,
             },
         }
     },
@@ -64,30 +62,26 @@ export default {
     },
     methods: {
         getData() {
-             this.noteEmail = storageService.load('noteEmail');
+            this.noteEmail = storageService.load('noteEmail');
             if(!this.noteEmail || this.noteEmail === null) {
                 this.noteEmail = {"id":'12345678910',"content": 'Nothing'};
             }
             let storageNotes = storageService.load('keepNotes');
             let storageImgs = storageService.load('keepImgs');
-            let storageTodos = storageService.load('keepTodos');
-            if (!storageNotes || !storageImgs || !storageTodos
+            if (!storageNotes || !storageImgs
                 || storageNotes === null
-                || storageImgs === null || storageTodos === null) {
+                || storageImgs === null ) {
                 storageService.getDataFromFileGit('notes')
                     .then(notes => this.notes = notes);
                 storageService.getDataFromFileGit('imgUrls')
                     .then(urls => this.imgUrls = urls);
-                storageService.getDataFromFileGit('todos')
-                    .then(todos => this.todos = todos);
             } else {
                 this.notes = storageNotes;
                 this.imgUrls = storageImgs;
-                this.todos = storageTodos;
             }
             setTimeout(() => {
                 this.selected = 'text'; console.log('after timeout...', this.notes);
-                keepService.initGlobals(this.notes, this.imgUrls,this.todos);
+                keepService.initGlobals(this.notes, this.imgUrls);
             }, 3000);
         },
 
@@ -96,9 +90,6 @@ export default {
         },
         saveImgUrlsLocally() {
             storageService.saveToFile(JSON.stringify(this.imgUrls), 'imgUrls.json');
-        },
-        saveTodosLocally() {
-            storageService.saveToFile(JSON.stringify(this.todos), 'todos.json');
         },
     },
     computed: {
