@@ -7,19 +7,24 @@ export default {
     template: `
         <section class="email-app-body" v-if="emails">
             <div class="emails-container">
-                <div class="email-navbar">
+                <button class="email-navbar-toggler" @click="showNav=!showNav">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="email-navbar" :class="{emailNavbarShow: showNav}">
                     <router-link :to="'/email-app/email-compose'">
-                        <button class="compose-btn" @click="notEmpty = true">
+                        <button class="compose-btn" @click="notEmpty = true, containersToggler = true, showNav=!showNav"">
                             <div><i class="fas fa-plus"></i></div>
                             <div>Compose</div> 
                         </button>
                     </router-link>
-                    <div class="email-navbar-item" @click="changeEmailSection('inbox')">Inbox</div>
-                    <div class="email-navbar-item" @click="changeEmailSection('sent')">Sent</div>
-                    <div class="email-navbar-item" @click="changeEmailSection('deleted')">Deleted</div>
+                    <div class="email-navbar-item" @click="changeEmailSection('inbox'), containersToggler = false, showNav=!showNav">
+                        Inbox
+                    </div>
+                    <div class="email-navbar-item" @click="changeEmailSection('sent'), containersToggler = false, showNav=!showNav">Sent</div>
+                    <div class="email-navbar-item" @click="changeEmailSection('deleted'), containersToggler = false, showNav=!showNav">Deleted</div>
                     <email-status :emails="emailsToShow"></email-status>
                 </div>
-                <div class="email-list-wrapper">
+                <div class="email-list-wrapper" :class="{hideEmailList: containersToggler}">
                     <div class="email-list-nav">    
                         <select class="filter-select" v-model="filterType" :emails="showEmailsBySelect">
                             <option value="all">All</option>
@@ -33,11 +38,11 @@ export default {
                             <option value="sortBySubject">Sort By Subject</option>
                         </select>
                     </div>
-                    <div class="email-list" @click="notEmpty = true">    
+                    <div class="email-list" @click="notEmpty = true, containersToggler = !containersToggler" >    
                         <email-list :emails="emailsToShow"></email-list>
                     </div>
                 </div>
-                <div class="info-container" v-show="notEmpty">
+                <div class="info-container" :class="{hideInfoContainer: !containersToggler}" v-show="notEmpty">
                     <router-view></router-view>
                 </div>  
             </div>
@@ -53,7 +58,9 @@ export default {
             sortType: 'sortByNewest',
             filteredEmails: null,
             emailType: 'inbox',
-            notEmpty: false
+            notEmpty: false,
+            showNav: false,
+            containersToggler: false,
         }
     },
     methods: {
