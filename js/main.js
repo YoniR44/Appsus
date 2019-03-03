@@ -8,7 +8,7 @@ window.vueApp = new Vue({
     el: '#app',
     router: myRouter,
     template: `
-        <section>
+        <section class="container-all">
             <nav class="main-navbar">
                 <div class="navbar-logo">Appsus</div>
                 <button class="toggle-nav-btn" @click="showMainNav = !showMainNav"><i class="fas fa-th" style="font-size: 40px"></i></button>
@@ -33,11 +33,12 @@ window.vueApp = new Vue({
             </div>
             <div class="display-container">
                 <router-view></router-view>
-                <footer class="main-footer">
-                    <hr>
-                    coffeerights &copy; 2019
-                </footer>
+                
             </div>
+            <footer class="main-footer">
+                <hr>
+                <div style="padding: 15px">coffeerights &copy; 2019</div>
+            </footer>
         </section>
     `,
     data() {
