@@ -50,6 +50,9 @@ export default {
                     </div>
                 </div>
                 <div class="info-container" :class="{hideInfoContainer: !containersToggler}" v-show="notEmpty">
+                    <div class="mail-section-nav">
+                        <button class="go-back-btn"><i class="far fa-arrow-alt-circle-left"></i></button>
+                    </div>
                     <router-view></router-view>
                 </div>  
             </div>
