@@ -28,6 +28,12 @@
     border-radius: 10px;
     background-color: darkseagreen;
     cursor: pointer;
+    box-shadow: 4px 4px 30px -6px rgba(0,0,0,0.75);
+    border: unset;
+}
+
+.email-form-submit:hover {
+    background-color: darkcyan;
 }
 
 .email-form-body {

@@ -139,7 +139,7 @@
 }
 
 .mail-section-nav {
-    height: 30px;
+    height: 50px;
 }
 
 .go-back-btn {
@@ -149,7 +149,7 @@
     border-radius: 10px;
     background-color: darkseagreen;
     border: unset;
-    box-shadow: 7px 7px 47px -6px rgba(0,0,0,0.75);
+    box-shadow: 4px 4px 30px -6px rgba(0,0,0,0.75);
     font-size: 25px;
 }
 
@@ -176,7 +176,8 @@
 .filter-select {
     width: 70px;
     height: 30px;
-    border: 1px solid black;
+    border: 1px solid #5bd1ee;
+    background-color: #f4f5f4;
     display: flex;
     justify-content: center;
     align-items: center;

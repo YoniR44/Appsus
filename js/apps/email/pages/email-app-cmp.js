@@ -8,9 +8,9 @@ export default {
     template: `
         <section class="email-app-body" v-if="emails">
             <div class="emails-container">
-                <button class="email-navbar-toggler" @click="showNav=!showNav">
+                <!-- <button class="email-navbar-toggler" @click="showNav=!showNav">
                     <i class="fas fa-bars"></i>
-                </button>
+                </button> -->
                 <div class="email-navbar" :class="{emailNavbarShow: showNav}">
                     <router-link :to="'/email-app/email-compose'">
                         <button class="compose-btn" @click="notEmpty = true, containersToggler = true, showNav=!showNav"">
@@ -33,6 +33,9 @@ export default {
                 </div>
                 <div class="email-list-wrapper" :class="{hideEmailList: containersToggler}">
                     <div class="email-list-nav">    
+                        <button class="email-navbar-toggler" @click="showNav=!showNav">
+                            <i class="fas fa-bars"></i>
+                        </button>
                         <select class="filter-select" v-model="filterType" :emails="showEmailsBySelect">
                             <option value="all">All</option>
                             <option value="read">Read</option>
@@ -51,7 +54,7 @@ export default {
                 </div>
                 <div class="info-container" :class="{hideInfoContainer: !containersToggler}" v-show="notEmpty">
                     <div class="mail-section-nav">
-                        <button class="go-back-btn"><i class="far fa-arrow-alt-circle-left"></i></button>
+                        <button class="go-back-btn" @click="containersToggler = !containersToggler, notEmpty = false"><i class="far fa-arrow-alt-circle-left"></i></button>
                     </div>
                     <router-view></router-view>
                 </div>  
@@ -111,6 +114,9 @@ export default {
                 }
             }
             this.unreadCount = count;
+        },
+        goBack() {
+
         }
     },
     computed: {
